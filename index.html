@@ -180,7 +180,7 @@ View GitHub
                     <div><span class="t-cmd">$ </span><span class="t-out">cat profile.json</span></div>
                     <div class="t-dim">{</div>
                     <div>&nbsp;&nbsp;<span class="t-key">"role"</span>: <span class="t-out">"AI Engineer"</span>,</div>
-                    <div>&nbsp;&nbsp;<span class="t-key">"education"</span>: <span class="t-out">"CSE Student"</span>,
+                    <div>&nbsp;&nbsp;<span class="t-key">"education"</span>: <span class="t-out">"DCME — Dr. YC James Yen Govt. Polytechnic"</span>,
                     </div>
                     <div>&nbsp;&nbsp;<span class="t-key">"flagship"</span>: <span class="t-out">"768M param LLM"</span>,
                     </div>
@@ -189,88 +189,47 @@ View GitHub
                     <div>&nbsp;&nbsp;<span class="t-key">"response_time"</span>: <span class="t-out">"&lt;24h"</span>
                     </div>
                     <div class="t-dim">}</div>
-                </div>
-            </div>
-        </div>
-    </section>
+</div>
 
-    <!-- PROJECTS -->
-    <section id="projects">
-        <div class="section-header fade-in">
-            <div class="section-eyebrow">03 — Proof of Work</div>
-            <h2 class="section-title">Featured Projects</h2>
-            <p class="section-subtitle">Real projects, real code, all verifiable on GitHub.</p>
-        </div>
-        <div class="projects-grid">
-            <!-- Featured: LAXMANA -->
-            <div class="project-card featured tilt-card fade-in">
-                <div>
-                    <div class="project-header">
-                        <div class="laxmana-logo">
-                            <img src="dark_logo_without_name.png" alt="LAXMANA" width="40" height="40">
-                        </div>
-                        <div style="display:flex;gap:0.5rem;">
-                            <span class="project-badge badge-research">Research</span>
-                            <span class="project-badge badge-training">Training</span>
-                        </div>
-                    </div>
-                    <div class="project-name" style="font-size:1.3rem;margin-top:1rem">LAXMANA LLM</div>
-                    <div
-                        style="font-size:11px;color:var(--text-dim);letter-spacing:0.08em;text-transform:uppercase;margin:0.3rem 0 0.8rem;font-family:var(--mono)">
-                        768M Parameter Multilingual Model</div>
-                    <p class="project-desc" style="font-size:13px">Built from scratch — character-level bigram to 768M
-                        parameter transformer with GQA, RoPE, SwiGLU, and RMSNorm. Supports 4 languages. This is not a
-                        fine-tune — it's a model trained from zero. <strong style="color:var(--amber)">Currently being
-                            trained.</strong></p>
-                </div>
-                <div>
-                    <div
-                        style="background:var(--bg3);border:1px solid var(--border);border-radius:10px;padding:1rem;font-size:12px;margin-bottom:1rem;font-family:var(--mono)">
-                        <div style="color:var(--text-dim);margin-bottom:0.5rem">// Architecture</div>
-                        <div><span style="color:var(--primary-light)">params</span> = <span
-                                style="color:var(--amber)">768M</span></div>
-                        <div><span style="color:var(--primary-light)">layers</span> = <span
-                                style="color:var(--amber)">24</span></div>
-                        <div><span style="color:var(--primary-light)">experts</span> = <span
-                                style="color:var(--amber)">8</span></div>
-                        <div><span style="color:var(--primary-light)">heads</span> = <span style="color:var(--amber)">16
-                                (GQA)</span></div>
-                        <div><span style="color:var(--primary-light)">vocab</span> = <span
-                                style="color:var(--amber)">BPE tokenizer</span></div>
-                        <div style="margin-top:0.5rem;padding-top:0.5rem;border-top:1px solid var(--border);">
-                            <span style="color:var(--amber)">⚡</span> <span style="color:var(--text-dim)">Status:</span>
-                            <span style="color:var(--amber)">Training in progress</span>
-                        </div>
-                    </div>
-                    <div class="project-stack">
-                        <span class="tag">PyTorch</span>
-                        <span class="tag">BPE</span>
-                        <span class="tag">GQA</span>
-                        <span class="tag">RoPE</span>
-                        <span class="tag">SwiGLU</span>
-                    </div>
-                </div>
-            </div>
+<!-- LAXCODE -->
+<div class="project-card tilt-card fade-in">
+<div class="project-header">
+<div class="project-icon"><img src="icons/code-icon.svg" alt="LAXCODE" width="32" height="32"></div>
+<span class="project-badge badge-live">Live</span>
+</div>
+<div class="project-name">LAXCODE</div>
+<p class="project-desc">Autonomous coding agent powered by NVIDIA NIM. Writes, runs, and debugs code automatically.</p>
+<div class="project-stack">
+<span class="tag">NVIDIA NIM</span>
+<span class="tag">LangGraph</span>
+<span class="tag">Kimi K2</span>
+</div>
+<div style="margin-top:1rem;">
+<a href="https://github.com/venkattejaa/laxcode" target="_blank" class="btn btn-ghost" style="font-size:13px;padding:0.5rem 1rem;">
+<svg width="16" height="16" viewBox="0 0 24 24" fill="currentColor" style="margin-right:6px;"><path d="M12 0c-6.626 0-12 5.373-12 12 0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23.957-.266 1.983-.399 3.003-.404 1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576 4.765-1.589 8.199-6.086 8.199-11.386 0-6.627-5.373-12-12-12z"/></svg>
+View Code
+</a>
+</div>
+</div>
 
-            <div class="project-card tilt-card fade-in">
-                <div class="project-header">
-                    <div class="project-icon"><img src="icons/code-icon.svg" alt="LAXCODE" width="32" height="32"></div>
-                    <span class="project-badge badge-live">Live</span>
-                </div>
-                <div class="project-name">LAXCODE</div>
-                <p class="project-desc">Autonomous coding agent powered by NVIDIA NIM. Writes, runs, and debugs code
-                    automatically. Part of the LAXMANA ecosystem.</p>
-                <div class="project-stack">
-                    <span class="tag">NVIDIA NIM</span>
-                    <span class="tag">LangGraph</span>
-                    <span class="tag">Kimi K2</span>
-                </div>
-            </div>
-
+<!-- Ghost Messenger -->
+<div class="project-card tilt-card fade-in">
+<div class="project-header">
+<div class="project-icon"><img src="icons/whatsapp-icon.svg" alt="Ghost" width="32" height="32"></div>
+<span class="project-badge badge-live">Live</span>
+</div>
+<div class="project-name">Ghost Messenger</div>
+<p class="project-desc">E2E encrypted Android messaging app disguised as calculator. WebRTC calls, secure messaging, Firebase backend.</p>
+<div class="project-stack">
+<span class="tag">Android</span>
+<span class="tag">E2E Encryption</span>
+<span class="tag">WebRTC</span>
+</div>
+</div>
 </div>
 </section>
 
-    <!-- TRUST & WHY ME -->
+<!-- TRUST & WHY ME -->
     <section id="trust">
         <div class="section-header fade-in">
             <div class="section-eyebrow">04 — Why Trust Me</div>
@@ -439,11 +398,11 @@ View GitHub
                                 height="20"></span>
                         <span>venkattejanaik@zohomail.in</span>
                     </a>
-                    <a href="https://wa.me/917980089439" target="_blank" class="contact-link">
-                        <span class="contact-link-icon"><img src="icons/whatsapp-icon.svg" alt="WhatsApp" width="20"
-                                height="20"></span>
-                        <span>WhatsApp: +91 7980089439</span>
-                    </a>
+<a href="https://wa.me/918142579498" target="_blank" class="contact-link">
+<span class="contact-link-icon"><img src="icons/whatsapp-icon.svg" alt="WhatsApp" width="20"
+height="20"></span>
+<span>WhatsApp: +91 81425 79498</span>
+</a>
                     <a href="https://github.com/venkattejaa" target="_blank" class="contact-link">
                         <span class="contact-link-icon"><img src="icons/opensource-icon.svg" alt="GitHub" width="20"
                                 height="20"></span>
@@ -500,16 +459,16 @@ View GitHub
             <div class="cta-title">Ready to start?</div>
             <div class="cta-subtitle">No fake reviews. No inflated claims. Just real engineering skill — verify it
                 yourself.</div>
-            <a href="https://wa.me/917980089439" class="btn btn-primary"
-                style="font-size:15px;padding:0.9rem 2rem;">Message on WhatsApp <span class="btn-arrow">→</span></a>
+<a href="https://wa.me/918142579498" class="btn btn-primary"
+style="font-size:15px;padding:0.9rem 2rem;">Message on WhatsApp <span class="btn-arrow">→</span></a>
         </div>
     </section>
 
     <!-- FOOTER -->
     <footer>
         <p>Built by <span>Venkat Teja</span> — Available for freelance worldwide</p>
-        <p style="margin-top:0.5rem;color:var(--text-muted)">© 2025 venkatteja.dev · Real skills, real code, real
-            results</p>
+<p style="margin-top:0.5rem;color:var(--text-muted)">© 2026 venkattejaa.github.io · Real skills, real code, real
+results</p>
     </footer>
 
     <script>
@@ -674,7 +633,7 @@ View GitHub
 
             if (contactMethod === 'whatsapp') {
                 // Open WhatsApp with pre-filled message
-                const whatsappUrl = `https://wa.me/917980089439?text=${encodeURIComponent(`Hi Teja,
+                const whatsappUrl = `https://wa.me/918142579498?text=${encodeURIComponent(`Hi Teja,
 
 I'm interested in working with you.
 
