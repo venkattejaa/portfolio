@@ -29,36 +29,69 @@
 html { scroll-behavior: smooth; }
 
 body {
-    background: var(--bg);
-    color: var(--text);
-    font-family: var(--font);
-    font-size: 15px;
-    line-height: 1.7;
-    overflow-x: hidden;
+background: var(--bg);
+color: var(--text);
+font-family: var(--font);
+font-size: 15px;
+line-height: 1.7;
+overflow-x: hidden;
+}
+
+/* === VIDEO BACKGROUND === */
+.video-background {
+position: fixed;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+z-index: -2;
+overflow: hidden;
+}
+
+.video-background video {
+position: absolute;
+top: 50%;
+left: 50%;
+min-width: 100%;
+min-height: 100%;
+width: auto;
+height: auto;
+transform: translate(-50%, -50%);
+object-fit: cover;
+}
+
+.video-overlay {
+position: absolute;
+top: 0;
+left: 0;
+width: 100%;
+height: 100%;
+background: linear-gradient(to bottom, rgba(10, 10, 15, 0.7), rgba(10, 10, 15, 0.9));
+z-index: 1;
 }
 
 /* === ORGANIC BACKGROUND === */
 body::before {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background: 
-        radial-gradient(ellipse 150% 70% at 50% -20%, rgba(99, 102, 241, 0.1), transparent),
-        radial-gradient(ellipse 100% 50% at 80% 60%, rgba(6, 214, 160, 0.06), transparent);
-    pointer-events: none;
-    z-index: 0;
+content: '';
+position: fixed;
+inset: 0;
+background:
+radial-gradient(ellipse 150% 70% at 50% -20%, rgba(99, 102, 241, 0.15), transparent),
+radial-gradient(ellipse 100% 50% at 80% 60%, rgba(250, 147, 250, 0.08), transparent);
+pointer-events: none;
+z-index: -1;
 }
 
 /* Subtle noise texture */
 body::after {
-    content: '';
-    position: fixed;
-    inset: 0;
-    background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
-    opacity: 0.02;
-    pointer-events: none;
-    z-index: 9999;
-    mix-blend-mode: overlay;
+content: '';
+position: fixed;
+inset: 0;
+background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 256 256' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='noiseFilter'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.8' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23noiseFilter)'/%3E%3C/svg%3E");
+opacity: 0.03;
+pointer-events: none;
+z-index: 9999;
+mix-blend-mode: overlay;
 }
 
 /* === FLOATING ORBS === */
