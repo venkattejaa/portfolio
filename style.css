@@ -624,10 +624,63 @@ body {
     flex-direction: column;
     justify-content: center;
     align-items: center;
-    background: var(--bg-secondary);
-    border: 1px solid rgba(212, 175, 55, 0.1);
+    background: linear-gradient(135deg, var(--bg-secondary) 0%, #0f0f0f 100%);
+    border: 1px solid rgba(212, 175, 55, 0.15);
     position: relative;
     overflow: hidden;
+}
+
+/* Code pattern backgrounds for project visuals */
+.project-visual::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-image: 
+        linear-gradient(rgba(212, 175, 55, 0.03) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(212, 175, 55, 0.03) 1px, transparent 1px);
+    background-size: 40px 40px;
+    opacity: 0.5;
+}
+
+/* Decorative corner brackets */
+.project-visual .corner {
+    position: absolute;
+    width: 30px;
+    height: 30px;
+    border-color: rgba(212, 175, 55, 0.3);
+    border-style: solid;
+    border-width: 0;
+}
+
+.project-visual .corner-tl {
+    top: 20px;
+    left: 20px;
+    border-top-width: 2px;
+    border-left-width: 2px;
+}
+
+.project-visual .corner-tr {
+    top: 20px;
+    right: 20px;
+    border-top-width: 2px;
+    border-right-width: 2px;
+}
+
+.project-visual .corner-bl {
+    bottom: 20px;
+    left: 20px;
+    border-bottom-width: 2px;
+    border-left-width: 2px;
+}
+
+.project-visual .corner-br {
+    bottom: 20px;
+    right: 20px;
+    border-bottom-width: 2px;
+    border-right-width: 2px;
 }
 
 .project-visual::before {
@@ -735,6 +788,20 @@ body {
     border-radius: 2px;
 }
 
+.project-link {
+    display: block;
+    text-decoration: none;
+    color: inherit;
+}
+
+.project-link:visited {
+    color: inherit;
+}
+
+.project-link:active {
+    color: inherit;
+}
+
 /* ============================================
    ABOUT SECTION - Asymmetric
    ============================================ */
@@ -762,8 +829,12 @@ body {
     line-height: 1.2;
 }
 
-.about-title span {
-    display: block;
+.about-title-line {
+    display: inline;
+}
+
+.about-title-line::after {
+    content: ' ';
 }
 
 .about-title .highlight {

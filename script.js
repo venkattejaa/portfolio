@@ -66,10 +66,11 @@ function splitText() {
         const text = el.textContent;
         el.innerHTML = '';
         
-        // Split by words for titles, by characters for special effects
-        const isTitle = el.tagName === 'H1' || el.tagName === 'H2';
+        // Only split hero title - keep about title normal
+        const isHeroTitle = el.closest('.hero') !== null;
         
-        if (isTitle) {
+        if (isHeroTitle) {
+            // Hero title: words on separate lines with reveal
             const words = text.split(' ');
             words.forEach((word, i) => {
                 const wordSpan = document.createElement('span');
@@ -86,6 +87,18 @@ function splitText() {
                 wordSpan.appendChild(inner);
                 el.appendChild(wordSpan);
             });
+        } else {
+            // Other titles: simple fade in
+            el.textContent = text;
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(20px)';
+            el.style.transition = 'opacity 0.8s ease, transform 0.8s ease';
+            
+            // Make visible after a delay
+            setTimeout(() => {
+                el.style.opacity = '1';
+                el.style.transform = 'translateY(0)';
+            }, 200);
         }
     });
 }
