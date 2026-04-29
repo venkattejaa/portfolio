@@ -3,160 +3,119 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Venkat Teja — AI Engineer</title>
+    <title>Venkat Teja — AI Engineer & Developer</title>
+    <meta name="description" content="AI Engineer building 768M-parameter LLMs from scratch. Real systems, no templates.">
     
-    <!-- Cinematic Typography -->
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
     
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <!-- Custom Cursor -->
-    <div class="cursor-dot"></div>
-    <div class="cursor-outline"></div>
-    
-    <!-- Film Grain Overlay -->
-    <div class="film-grain"></div>
-    
-    <!-- Vignette -->
-    <div class="vignette"></div>
-    
-    <!-- Noise Texture -->
-    <div class="noise-overlay"></div>
-
     <!-- Navigation -->
-    <nav class="nav">
-        <div class="nav-logo" data-magnetic>VT</div>
-        <div class="nav-links">
-            <a href="#work" class="nav-link" data-magnetic><span data-text="Work">Work</span></a>
-            <a href="#about" class="nav-link" data-magnetic><span data-text="About">About</span></a>
-            <a href="#contact" class="nav-link" data-magnetic><span data-text="Contact">Contact</span></a>
+    <nav class="navbar">
+        <div class="nav-brand">
+            <a href="#">Venkat Teja</a>
         </div>
+        <ul class="nav-links">
+            <li><a href="#work">Work</a></li>
+            <li><a href="#about">About</a></li>
+            <li><a href="#contact" class="nav-cta">Contact</a></li>
+        </ul>
     </nav>
 
-    <!-- Hero Section - Split Screen -->
+    <!-- Hero -->
     <section class="hero">
-        <div class="hero-left">
-            <div class="hero-content">
-                <div class="eyebrow" data-scramble>Available for new projects</div>
-                <h1 class="hero-title">
-                    <span class="title-line" data-split-text>Building</span>
-                    <span class="title-line highlight" data-split-text>intelligent</span>
-                    <span class="title-line" data-split-text>systems</span>
-                </h1>
-                <p class="hero-desc">AI Engineer & Full-Stack Developer. Training 768M-parameter LLMs from scratch.</p>
-                <div class="hero-cta">
-                    <a href="#work" class="btn-magnetic" data-magnetic>
-                        <span class="btn-text">View Projects</span>
-                        <span class="btn-arrow">→</span>
-                    </a>
+        <div class="container">
+            <p class="hero-eyebrow">AI Engineer & Full-Stack Developer</p>
+            <h1 class="hero-title">
+                Building intelligent<br>
+                <span class="gradient-text">systems from scratch</span>
+            </h1>
+            <p class="hero-description">
+                I don't follow tutorials. I train 768M-parameter LLMs, build stealth messaging apps, 
+                and create AI code assistants. Real engineering, no shortcuts.
+            </p>
+            <div class="hero-stats">
+                <div class="stat">
+                    <span class="stat-value">768M</span>
+                    <span class="stat-label">Parameters</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">3</span>
+                    <span class="stat-label">Live Projects</span>
+                </div>
+                <div class="stat">
+                    <span class="stat-value">&lt;24h</span>
+                    <span class="stat-label">Response Time</span>
                 </div>
             </div>
-        </div>
-        <div class="hero-right">
-            <div class="hero-visual">
-                <div class="visual-bg"></div>
-                <div class="visual-lines">
-                    <div class="line"></div>
-                    <div class="line"></div>
-                    <div class="line"></div>
-                    <div class="line"></div>
-                    <div class="line"></div>
-                </div>
-                <div class="hero-stats">
-                    <div class="stat-item" data-counter>
-                        <span class="stat-num">768</span>
-                        <span class="stat-label">M Parameters</span>
-                    </div>
-                    <div class="stat-item" data-counter>
-                        <span class="stat-num">3</span>
-                        <span class="stat-label">Live Systems</span>
-                    </div>
-                    <div class="stat-item" data-counter>
-                        <span class="stat-num">24</span>
-                        <span class="stat-label">Hour Response</span>
-                    </div>
-                </div>
+            <div class="hero-cta">
+                <a href="#work" class="btn-primary">View Projects</a>
+                <a href="#contact" class="btn-secondary">Get in Touch</a>
             </div>
-        </div>
-        <div class="scroll-indicator">
-            <div class="scroll-text">Scroll</div>
-            <div class="scroll-line"></div>
         </div>
     </section>
 
-    <!-- Horizontal Scroll Gallery -->
-    <section class="gallery-section" id="work">
-        <div class="gallery-header">
-            <span class="section-eyebrow" data-scramble>Selected Work</span>
-            <h2 class="section-title" data-split-text>Projects</h2>
-        </div>
-        
-        <div class="gallery-wrapper">
-            <div class="gallery-track">
-                <!-- Project 1: LAXMANA -->
-                <article class="project-card featured" data-speed="1.2">
+    <!-- Projects -->
+    <section id="work" class="projects">
+        <div class="container">
+            <div class="section-header">
+                <p class="section-eyebrow">Selected Work</p>
+                <h2 class="section-title">Projects</h2>
+            </div>
+            
+            <div class="projects-grid">
+                <!-- LAXMANA -->
+                <article class="project-card featured">
                     <a href="https://github.com/venkattejaa/LAXMANA" target="_blank" class="project-link">
-                        <div class="project-image">
-                            <div class="image-mask">
-                                <div class="image-reveal"></div>
-                            </div>
-                            <div class="project-visual laxmana-visual">
-                                <span class="corner corner-tl"></span>
-                                <span class="corner corner-tr"></span>
-                                <span class="corner corner-bl"></span>
-                                <span class="corner corner-br"></span>
-                                <span class="visual-text">LAXMANA</span>
-                                <div class="visual-badges">
-                                    <span class="badge">768M</span>
-                                    <span class="badge">LLM</span>
-                                </div>
+                        <div class="project-visual">
+                            <div class="project-icon">LM</div>
+                            <div class="project-badges">
+                                <span class="badge">LLM</span>
+                                <span class="badge">768M Params</span>
                             </div>
                         </div>
-                        <div class="project-info">
-                            <div class="project-meta">
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3 class="project-name">LAXMANA</h3>
                                 <span class="project-year">2024</span>
-                                <span class="project-arrow">↗</span>
                             </div>
-                            <h3 class="project-title">LAXMANA</h3>
-                            <p class="project-desc">Multilingual LLM built from scratch — 768M parameters, custom tokenizer, training from zero. No fine-tuning, no shortcuts.</p>
-                            <div class="project-tags">
+                            <p class="project-description">
+                                Multilingual LLM built entirely from scratch. Custom tokenizer, training pipeline, 
+                                and inference engine. No fine-tuning existing models—pure architecture engineering.
+                            </p>
+                            <div class="project-tech">
                                 <span>PyTorch</span>
                                 <span>Transformers</span>
                                 <span>CUDA</span>
+                                <span>Python</span>
                             </div>
                         </div>
                     </a>
                 </article>
 
-                <!-- Project 2: Ghost Messenger -->
-                <article class="project-card" data-speed="1.0">
+                <!-- Ghost Messenger -->
+                <article class="project-card">
                     <a href="https://github.com/venkattejaa/Ghost-Messenger" target="_blank" class="project-link">
-                        <div class="project-image">
-                            <div class="image-mask">
-                                <div class="image-reveal"></div>
-                            </div>
-                            <div class="project-visual">
-                                <span class="corner corner-tl"></span>
-                                <span class="corner corner-tr"></span>
-                                <span class="corner corner-bl"></span>
-                                <span class="corner corner-br"></span>
-                                <span class="visual-text">GHOST</span>
-                                <div class="visual-badges">
-                                    <span class="badge">Stealth</span>
-                                    <span class="badge">Live</span>
-                                </div>
+                        <div class="project-visual ghost">
+                            <div class="project-icon">GH</div>
+                            <div class="project-badges">
+                                <span class="badge">Live</span>
+                                <span class="badge">Stealth</span>
                             </div>
                         </div>
-                        <div class="project-info">
-                            <div class="project-meta">
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3 class="project-name">Ghost Messenger</h3>
                                 <span class="project-year">2024</span>
-                                <span class="project-arrow">↗</span>
                             </div>
-                            <h3 class="project-title">Ghost Messenger</h3>
-                            <p class="project-desc">Secret messaging app disguised as a calculator. Hidden chats, self-destructing messages, encrypted storage. No one knows it's a messenger.</p>
-                            <div class="project-tags">
+                            <p class="project-description">
+                                Secret messaging app disguised as a calculator. Hidden chats, encrypted storage, 
+                                self-destructing messages. Invisible to anyone who doesn't know it's there.
+                            </p>
+                            <div class="project-tech">
                                 <span>JavaScript</span>
                                 <span>React Native</span>
                                 <span>Encryption</span>
@@ -165,33 +124,26 @@
                     </a>
                 </article>
 
-                <!-- Project 3: LAXCODE -->
-                <article class="project-card" data-speed="0.8">
+                <!-- LAXCODE -->
+                <article class="project-card">
                     <a href="https://github.com/venkattejaa/LAXCODE" target="_blank" class="project-link">
-                        <div class="project-image">
-                            <div class="image-mask">
-                                <div class="image-reveal"></div>
-                            </div>
-                            <div class="project-visual">
-                                <span class="corner corner-tl"></span>
-                                <span class="corner corner-tr"></span>
-                                <span class="corner corner-bl"></span>
-                                <span class="corner corner-br"></span>
-                                <span class="visual-text">LAXCODE</span>
-                                <div class="visual-badges">
-                                    <span class="badge">AI</span>
-                                    <span class="badge">Code</span>
-                                </div>
+                        <div class="project-visual laxcode">
+                            <div class="project-icon">LC</div>
+                            <div class="project-badges">
+                                <span class="badge">AI</span>
+                                <span class="badge">Code</span>
                             </div>
                         </div>
-                        <div class="project-info">
-                            <div class="project-meta">
+                        <div class="project-content">
+                            <div class="project-header">
+                                <h3 class="project-name">LAXCODE</h3>
                                 <span class="project-year">2024</span>
-                                <span class="project-arrow">↗</span>
                             </div>
-                            <h3 class="project-title">LAXCODE</h3>
-                            <p class="project-desc">AI-powered code assistant. Autocomplete, error detection, refactoring suggestions. Built with custom LLM integration.</p>
-                            <div class="project-tags">
+                            <p class="project-description">
+                                AI-powered code assistant with autocomplete, error detection, and refactoring. 
+                                Built with custom LLM integration for intelligent code understanding.
+                            </p>
+                            <div class="project-tech">
                                 <span>Python</span>
                                 <span>FastAPI</span>
                                 <span>LLM</span>
@@ -203,108 +155,90 @@
         </div>
     </section>
 
-    <!-- About Section - Asymmetric -->
-    <section class="about-section" id="about">
-        <div class="about-grid">
-            <div class="about-left">
-                <span class="section-eyebrow" data-scramble>Who I Am</span>
-                <h2 class="about-title">
-                    <span class="about-title-line">Engineering</span>
-                    <span class="about-title-line highlight">with</span>
-                    <span class="about-title-line">purpose</span>
-                </h2>
-            </div>
-            <div class="about-right">
+    <!-- About -->
+    <section id="about" class="about">
+        <div class="container">
+            <div class="about-grid">
+                <div class="about-header">
+                    <p class="section-eyebrow">About</p>
+                    <h2 class="section-title">Engineering<br>with purpose</h2>
+                </div>
                 <div class="about-content">
-                    <p class="about-text">I'm an AI Engineer based in India. I don't follow tutorials — I build real systems from the ground up.</p>
-                    <p class="about-text">My flagship project <strong>LAXMANA</strong> is a 768M parameter multilingual LLM built entirely from scratch. No fine-tuning, no shortcuts. Real engineering.</p>
+                    <p class="about-text">
+                        I'm an AI Engineer based in India. I build systems from the ground up—no templates, 
+                        no shortcuts. My flagship project <strong>LAXMANA</strong> is a 768M parameter multilingual 
+                        LLM trained entirely from scratch.
+                    </p>
+                    <p class="about-text">
+                        Currently open for new projects. I work directly with clients—no middlemen, 
+                        no agencies. Just real engineering, real results.
+                    </p>
                     
-                    <div class="terminal-window">
-                        <div class="terminal-header">
-                            <div class="terminal-dots">
-                                <span></span>
-                                <span></span>
-                                <span></span>
+                    <div class="skills-section">
+                        <h3 class="skills-title">Tech Stack</h3>
+                        <div class="skills-grid">
+                            <div class="skill-category">
+                                <h4>AI/ML</h4>
+                                <p>PyTorch, TensorFlow, Transformers, CUDA, LLMs</p>
                             </div>
-                            <span class="terminal-title">profile.json</span>
-                        </div>
-                        <div class="terminal-body">
-                            <pre><code>{
-  "role": "AI Engineer",
-  "education": "DCME",
-  "flagship": "768M param LLM",
-  "live_projects": 3,
-  "opensource": true,
-  "available": true
-}</code></pre>
+                            <div class="skill-category">
+                                <h4>Backend</h4>
+                                <p>Python, Node.js, FastAPI, PostgreSQL, Redis</p>
+                            </div>
+                            <div class="skill-category">
+                                <h4>Frontend</h4>
+                                <p>React, JavaScript, HTML/CSS</p>
+                            </div>
+                            <div class="skill-category">
+                                <h4>Mobile</h4>
+                                <p>React Native, Android</p>
+                            </div>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-        
-        <div class="marquee-section">
-            <div class="marquee-track">
-                <span>PyTorch</span>
-                <span>•</span>
-                <span>TensorFlow</span>
-                <span>•</span>
-                <span>React</span>
-                <span>•</span>
-                <span>Node.js</span>
-                <span>•</span>
-                <span>Python</span>
-                <span>•</span>
-                <span>CUDA</span>
-                <span>•</span>
-                <span>Transformers</span>
-                <span>•</span>
-                <span>FastAPI</span>
-                <span>•</span>
-                <span>JavaScript</span>
-                <span>•</span>
-                <span>WhatsApp API</span>
-                <span>•</span>
+    </section>
+
+    <!-- Contact -->
+    <section id="contact" class="contact">
+        <div class="container">
+            <div class="contact-content">
+                <p class="section-eyebrow">Contact</p>
+                <h2 class="contact-title">Let's build<br>something great</h2>
+                <p class="contact-description">
+                    Have a project in mind? I typically respond within 24 hours.
+                </p>
+                
+                <div class="contact-links">
+                    <a href="mailto:venkattejanaik@zohomail.in" class="contact-item">
+                        <span class="contact-label">Email</span>
+                        <span class="contact-value">venkattejanaik@zohomail.in</span>
+                    </a>
+                    <a href="https://wa.me/918142579498" target="_blank" class="contact-item">
+                        <span class="contact-label">WhatsApp</span>
+                        <span class="contact-value">+91 81425 79498</span>
+                    </a>
+                    <a href="https://github.com/venkattejaa" target="_blank" class="contact-item">
+                        <span class="contact-label">GitHub</span>
+                        <span class="contact-value">@venkattejaa</span>
+                    </a>
+                    <a href="https://linkedin.com/in/sugali-venkata-teja-naik" target="_blank" class="contact-item">
+                        <span class="contact-label">LinkedIn</span>
+                        <span class="contact-value">Venkat Teja Naik</span>
+                    </a>
+                </div>
             </div>
         </div>
     </section>
 
-    <!-- Contact Section -->
-    <section class="contact-section" id="contact">
-        <div class="contact-content">
-            <span class="section-eyebrow" data-scramble>Get in Touch</span>
-            <h2 class="contact-title">Let's build<br>something great</h2>
-            
-            <div class="contact-links">
-                <a href="mailto:venkattejanaik@zohomail.in" class="contact-link" data-magnetic>
-                    <span class="link-text">venkattejanaik@zohomail.in</span>
-                    <span class="link-arrow">↗</span>
-                </a>
-                <a href="https://wa.me/918142579498" target="_blank" class="contact-link" data-magnetic>
-                    <span class="link-text">+91 81425 79498</span>
-                    <span class="link-arrow">↗</span>
-                </a>
-                <a href="https://github.com/venkattejaa" target="_blank" class="contact-link" data-magnetic>
-                    <span class="link-text">GitHub</span>
-                    <span class="link-arrow">↗</span>
-                </a>
-                <a href="https://linkedin.com/in/sugali-venkata-teja-naik" target="_blank" class="contact-link" data-magnetic>
-                    <span class="link-text">LinkedIn</span>
-                    <span class="link-arrow">↗</span>
-                </a>
-            </div>
-            
-            <div class="contact-footer">
-                <p>Based in India • Available worldwide</p>
-                <p class="response-time">Response time: &lt;24 hours</p>
-            </div>
+    <!-- Footer -->
+    <footer class="footer">
+        <div class="container">
+            <p>&copy; 2024 Venkat Teja. Built from scratch.</p>
         </div>
-    </section>
+    </footer>
 
-    <!-- Scripts -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/gsap.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.2/ScrollTrigger.min.js"></script>
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
     <script src="script.js"></script>
 </body>
 </html>
