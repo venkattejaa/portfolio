@@ -10,164 +10,216 @@
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="three-canvas"></div>
+    <div id="bg-canvas"></div>
 
-    <!-- Floating nav pill -->
-    <nav class="nav-pill">
-        <a href="#" class="nav-brand">VT</a>
-        <div class="nav-divider"></div>
-        <a href="#work" class="nav-item">Work</a>
-        <a href="#about" class="nav-item">About</a>
-        <a href="#contact" class="nav-cta-pill">Contact</a>
+    <!-- Nav -->
+    <nav class="nav-bar">
+        <a href="#" class="nav-logo">VT</a>
+        <div class="nav-links">
+            <a href="#work">Work</a>
+            <a href="#skills">Skills</a>
+            <a href="#services">Services</a>
+            <a href="#contact" class="nav-cta-btn">Contact</a>
+        </div>
     </nav>
 
     <!-- Hero -->
     <section class="hero">
-        <div class="hero-badge">Available for new projects</div>
-        <h1 class="hero-title">
-            <span class="line">Building intelligent</span>
-            <span class="line gold">systems</span>
-        </h1>
-        <p class="hero-sub">AI Engineer & Full-Stack Developer</p>
-        <p class="hero-desc">Training 768M-parameter LLMs from scratch. Real engineering, no shortcuts.</p>
-        <div class="hero-actions">
-            <a href="#work" class="btn-gold">View Work</a>
-            <a href="#contact" class="btn-outline">Get in Touch</a>
+        <div class="hero-content">
+            <div class="hero-tag">Available for projects</div>
+            <h1 class="hero-title">
+                <span class="hero-line">Building</span>
+                <span class="hero-line accent">intelligent</span>
+                <span class="hero-line">systems</span>
+            </h1>
+            <p class="hero-desc">AI Engineer & Full-Stack Developer. Training 768M-parameter LLMs from scratch.</p>
+            <div class="hero-actions">
+                <a href="#contact" class="btn-primary">Start a Project</a>
+                <a href="#work" class="btn-secondary">View Work</a>
+            </div>
+            <div class="hero-quick">
+                <a href="https://wa.me/918142579498" target="_blank" class="quick-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                    WhatsApp
+                </a>
+                <a href="mailto:venkattejanaik@zohomail.in" class="quick-btn">
+                    <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                    Email
+                </a>
+            </div>
         </div>
         <div class="hero-socials">
             <a href="https://github.com/venkattejaa" target="_blank">GH</a>
-            <a href="https://linkedin.com/in/sugali-venkata-teja-naik" target="_blank">LI</a>
-            <a href="mailto:venkattejanaik@zohomail.in">EM</a>
+            <a href="https://linkedin.com/in/sugali-venkata-teja-naik" target="_blank">IN</a>
+            <a href="https://wa.me/918142579498" target="_blank">WA</a>
         </div>
     </section>
 
-    <!-- Projects -->
+    <!-- Work -->
     <section class="section" id="work">
-        <div class="section-label" data-reveal>Selected Work</div>
-        <h2 class="section-title" data-reveal>Projects</h2>
-
-        <div class="projects-grid">
-            <article class="project-card" data-tilt>
-                <a href="https://github.com/venkattejaa/LAXMANA" target="_blank">
-                    <div class="card-visual">
-                        <span class="card-num">01</span>
-                        <span class="card-status">Training</span>
+        <div class="sec-label" data-reveal>Projects</div>
+        <h2 class="sec-title" data-reveal>Selected Work</h2>
+        <div class="project-grid">
+            <article class="project-card" data-reveal>
+                <a href="https://github.com/venkattejaa/LAXMANA" target="_blank" class="card-link">
+                    <div class="card-top">
+                        <span class="card-index">01</span>
+                        <span class="card-badge">Training</span>
                     </div>
                     <div class="card-body">
-                        <div class="card-head">
+                        <div class="card-header">
                             <h3>LAXMANA</h3>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
                         </div>
-                        <p>Training a 768M parameter multilingual LLM — custom tokenizer, training pipeline, and transformer architecture from scratch.</p>
-                        <div class="card-tags">
-                            <span>PyTorch</span>
-                            <span>Transformers</span>
-                            <span>CUDA</span>
-                        </div>
+                        <p>768M parameter multilingual LLM — custom tokenizer, training pipeline, transformer architecture.</p>
+                        <div class="card-tech"><span>PyTorch</span><span>Transformers</span><span>CUDA</span></div>
                     </div>
                 </a>
             </article>
-
-            <article class="project-card" data-tilt>
-                <a href="https://github.com/venkattejaa/Ghost-Messenger" target="_blank">
-                    <div class="card-visual">
-                        <span class="card-num">02</span>
-                        <span class="card-status gold">Live</span>
+            <article class="project-card" data-reveal>
+                <a href="https://github.com/venkattejaa/Ghost-Messenger" target="_blank" class="card-link">
+                    <div class="card-top">
+                        <span class="card-index">02</span>
+                        <span class="card-badge live">Live</span>
                     </div>
                     <div class="card-body">
-                        <div class="card-head">
+                        <div class="card-header">
                             <h3>Ghost Messenger</h3>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
                         </div>
-                        <p>Secret messaging app disguised as a calculator. Hidden chats, encrypted storage, self-destructing messages.</p>
-                        <div class="card-tags">
-                            <span>JavaScript</span>
-                            <span>React Native</span>
-                            <span>Encryption</span>
-                        </div>
+                        <p>Stealth messenger disguised as calculator. Hidden chats, encrypted storage, self-destructing messages.</p>
+                        <div class="card-tech"><span>JavaScript</span><span>React Native</span><span>Encryption</span></div>
                     </div>
                 </a>
             </article>
-
-            <article class="project-card" data-tilt>
-                <a href="https://github.com/venkattejaa/LAXCODE" target="_blank">
-                    <div class="card-visual">
-                        <span class="card-num">03</span>
-                        <span class="card-status gold">Working</span>
+            <article class="project-card" data-reveal>
+                <a href="https://github.com/venkattejaa/LAXCODE" target="_blank" class="card-link">
+                    <div class="card-top">
+                        <span class="card-index">03</span>
+                        <span class="card-badge live">Working</span>
                     </div>
                     <div class="card-body">
-                        <div class="card-head">
+                        <div class="card-header">
                             <h3>LAXCODE</h3>
-                            <svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
+                            <svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.5"><path d="M7 17L17 7M7 7h10v10"/></svg>
                         </div>
-                        <p>AI code assistant with autocomplete, error detection, and intelligent refactoring powered by custom LLM integration.</p>
-                        <div class="card-tags">
-                            <span>Python</span>
-                            <span>FastAPI</span>
-                            <span>LLM</span>
-                        </div>
+                        <p>AI code assistant with autocomplete, error detection, refactoring. Powered by custom LLM integration.</p>
+                        <div class="card-tech"><span>Python</span><span>FastAPI</span><span>LLM</span></div>
                     </div>
                 </a>
             </article>
+        </div>
+    </section>
+
+    <!-- Skills -->
+    <section class="section" id="skills">
+        <div class="sec-label" data-reveal>Expertise</div>
+        <h2 class="sec-title" data-reveal>Skills & Tools</h2>
+        <div class="skills-grid">
+            <div class="skill-card" data-reveal>
+                <h4>AI / ML</h4>
+                <p>PyTorch, TensorFlow, Transformers, HuggingFace, CUDA, NLP, LLMs</p>
+            </div>
+            <div class="skill-card" data-reveal>
+                <h4>Backend</h4>
+                <p>Python, Node.js, FastAPI, Django, PostgreSQL, Redis, REST APIs</p>
+            </div>
+            <div class="skill-card" data-reveal>
+                <h4>Frontend</h4>
+                <p>React, Next.js, JavaScript, TypeScript, HTML/CSS, Tailwind</p>
+            </div>
+            <div class="skill-card" data-reveal>
+                <h4>Mobile & Tools</h4>
+                <p>React Native, Android, Git, Docker, Linux, CI/CD, Cloud</p>
+            </div>
+        </div>
+    </section>
+
+    <!-- Services -->
+    <section class="section" id="services">
+        <div class="sec-label" data-reveal>What I Do</div>
+        <h2 class="sec-title" data-reveal>Services</h2>
+        <div class="services-grid">
+            <div class="service-card" data-reveal>
+                <span class="service-icon">01</span>
+                <h3>AI & LLM Development</h3>
+                <p>Custom AI models, LLM fine-tuning, RAG pipelines, and production ML systems. From research to deployment.</p>
+            </div>
+            <div class="service-card" data-reveal>
+                <span class="service-icon">02</span>
+                <h3>Full-Stack Development</h3>
+                <p>End-to-end web applications, APIs, and infrastructure. React frontends, Python backends, scalable databases.</p>
+            </div>
+            <div class="service-card" data-reveal>
+                <span class="service-icon">03</span>
+                <h3>Mobile Apps</h3>
+                <p>Cross-platform mobile applications with React Native. Clean architecture, smooth UX, production-ready.</p>
+            </div>
+            <div class="service-card" data-reveal>
+                <span class="service-icon">04</span>
+                <h3>Technical Consulting</h3>
+                <p>Architecture reviews, code audits, AI strategy. Direct advice from someone who builds, not just talks.</p>
+            </div>
         </div>
     </section>
 
     <!-- Stats -->
-    <section class="section stats" id="about">
-        <div class="stats-grid">
+    <section class="section stats-sec" id="stats">
+        <div class="stats-row">
             <div class="stat-item" data-reveal>
                 <span class="stat-num">768M</span>
                 <span class="stat-lbl">Parameters</span>
             </div>
             <div class="stat-item" data-reveal>
                 <span class="stat-num">3</span>
-                <span class="stat-lbl">Systems</span>
+                <span class="stat-lbl">Live Systems</span>
             </div>
             <div class="stat-item" data-reveal>
                 <span class="stat-num">&lt;24h</span>
                 <span class="stat-lbl">Response</span>
             </div>
-        </div>
-
-        <div class="about-wrap" data-reveal>
-            <h2 class="section-title">Built from scratch</h2>
-            <p>AI Engineer based in India. I build systems from the ground up — no templates, no shortcuts. LAXMANA is my flagship, but every project gets the same attention to architecture and performance.</p>
-            <div class="about-skills">
-                <span>AI/ML</span>
-                <span>Backend</span>
-                <span>Frontend</span>
-                <span>Mobile</span>
+            <div class="stat-item" data-reveal>
+                <span class="stat-num">100%</span>
+                <span class="stat-lbl">Direct</span>
             </div>
         </div>
     </section>
 
     <!-- Contact -->
-    <section class="section contact" id="contact">
-        <div class="section-label" data-reveal>Contact</div>
-        <h2 class="section-title" data-reveal>Let's build together</h2>
-        <p class="contact-desc" data-reveal>I typically respond within 24 hours.</p>
+    <section class="section contact-sec" id="contact">
+        <div class="sec-label" data-reveal>Contact</div>
+        <h2 class="sec-title" data-reveal>Let's build something</h2>
+        <p class="contact-desc" data-reveal>Respond within 24 hours. No middlemen, no agencies.</p>
+        <div class="contact-actions" data-reveal>
+            <a href="https://wa.me/918142579498" target="_blank" class="contact-big">
+                <span class="contact-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
+                </span>
+                <span class="contact-text">
+                    <span class="contact-method">WhatsApp</span>
+                    <span class="contact-value">+91 81425 79498</span>
+                </span>
+                <span class="contact-arrow">→</span>
+            </a>
+            <a href="mailto:venkattejanaik@zohomail.in" class="contact-big">
+                <span class="contact-icon">
+                    <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
+                </span>
+                <span class="contact-text">
+                    <span class="contact-method">Email</span>
+                    <span class="contact-value">venkattejanaik@zohomail.in</span>
+                </span>
+                <span class="contact-arrow">→</span>
+            </a>
+        </div>
         <div class="contact-links" data-reveal>
-            <a href="mailto:venkattejanaik@zohomail.in" class="contact-btn">
-                <span class="contact-lbl">Email</span>
-                <span class="contact-val">venkattejanaik@zohomail.in</span>
-            </a>
-            <a href="https://wa.me/918142579498" target="_blank" class="contact-btn">
-                <span class="contact-lbl">WhatsApp</span>
-                <span class="contact-val">+91 81425 79498</span>
-            </a>
-            <a href="https://github.com/venkattejaa" target="_blank" class="contact-btn">
-                <span class="contact-lbl">GitHub</span>
-                <span class="contact-val">github.com/venkattejaa</span>
-            </a>
-            <a href="https://linkedin.com/in/sugali-venkata-teja-naik" target="_blank" class="contact-btn">
-                <span class="contact-lbl">LinkedIn</span>
-                <span class="contact-val">Venkat Teja Naik</span>
-            </a>
+            <a href="https://github.com/venkattejaa" target="_blank">GitHub →</a>
+            <a href="https://linkedin.com/in/sugali-venkata-teja-naik" target="_blank">LinkedIn →</a>
         </div>
     </section>
 
     <footer class="footer">
-        <p>&copy; 2024 Venkat Teja. Built from scratch.</p>
+        <p>© 2024 Venkat Teja. Built from scratch.</p>
     </footer>
 
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/r128/three.min.js"></script>
