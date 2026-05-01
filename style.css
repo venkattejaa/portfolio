@@ -1,21 +1,21 @@
 /* ============================================
-   Venkat Teja — Professional Portfolio
-   Refined, authentic, premium
+   Venkat Teja — Cinematic Portfolio
+   Starfield + dramatic letter reveals
    ============================================ */
 
 :root {
-    --bg: #0a0c0f;
-    --surface: #101216;
-    --card: #16181d;
-    --border: #1e2128;
-    --border-hover: #2a2e38;
-    --text: #ecedee;
-    --text-sec: #8a8f9a;
-    --text-dim: #5c616e;
-    --accent: #14b8a6;
-    --accent-light: #2dd4bf;
-    --accent-dim: rgba(20, 184, 166, 0.12);
-    --accent-glow: rgba(20, 184, 166, 0.2);
+    --bg: #05070a;
+    --surface: #0a0d14;
+    --card: #0f1220;
+    --border: #1a1f2e;
+    --border-hover: #252b40;
+    --text: #e8eaed;
+    --text-sec: #7a8194;
+    --text-dim: #4b5162;
+    --accent: #a78bfa;
+    --accent-light: #c4b5fd;
+    --accent-dim: rgba(167, 139, 250, 0.1);
+    --accent-glow: rgba(167, 139, 250, 0.2);
     --font: 'Inter', system-ui, sans-serif;
     --font-mono: 'DM Mono', monospace;
     --ease: cubic-bezier(0.16, 1, 0.3, 1);
@@ -35,11 +35,10 @@ body {
 
 ::selection { background: var(--accent-dim); color: var(--accent-light); }
 
-#bg-canvas {
+canvas#starfield {
     position: fixed;
     top: 0; left: 0;
-    width: 100vw;
-    height: 100vh;
+    width: 100vw; height: 100vh;
     z-index: 0;
     pointer-events: none;
 }
@@ -55,18 +54,17 @@ body {
     justify-content: space-between;
     align-items: center;
     padding: 18px 36px;
-    background: rgba(10, 12, 15, 0.7);
-    backdrop-filter: blur(18px);
+    background: rgba(5, 7, 10, 0.65);
+    backdrop-filter: blur(20px);
     border-bottom: 1px solid var(--border);
 }
 
-.header-logo {
-    font-family: var(--font-mono);
-    font-size: 1rem;
-    font-weight: 500;
-    color: var(--accent);
-    text-decoration: none;
-    letter-spacing: 0.03em;
+.header-logo { display: flex; align-items: center; text-decoration: none; }
+
+.logo-img {
+    height: 36px;
+    width: auto;
+    border-radius: 6px;
 }
 
 .header-nav {
@@ -77,6 +75,7 @@ body {
 
 .header-nav a {
     font-size: 0.85rem;
+    font-weight: 500;
     color: var(--text-sec);
     text-decoration: none;
     transition: all 0.25s ease;
@@ -86,11 +85,10 @@ body {
 
 .header-cta {
     background: var(--accent);
-    color: #0a0c0f !important;
+    color: var(--bg) !important;
     padding: 8px 18px;
-    border-radius: 6px;
+    border-radius: 8px;
     font-weight: 600;
-    font-size: 0.85rem;
 }
 
 .header-cta:hover { background: var(--accent-light) !important; }
@@ -109,7 +107,7 @@ body {
 
 .hero-inner { max-width: 780px; }
 
-.hero-badge {
+.hero-tag {
     display: inline-block;
     font-size: 0.75rem;
     font-weight: 500;
@@ -139,7 +137,7 @@ body {
     background-clip: text;
 }
 
-.hero-text {
+.hero-desc {
     font-size: 1.1rem;
     color: var(--text-sec);
     max-width: 540px;
@@ -147,9 +145,10 @@ body {
     margin-bottom: 36px;
 }
 
-.hero-buttons {
+.hero-actions {
     display: flex;
     gap: 12px;
+    flex-wrap: wrap;
     margin-bottom: 28px;
 }
 
@@ -166,7 +165,7 @@ body {
 
 .btn-primary {
     background: var(--accent);
-    color: #0a0c0f;
+    color: var(--bg);
 }
 
 .btn-primary:hover {
@@ -193,11 +192,9 @@ body {
 
 .hero-link {
     display: inline-flex;
-    align-items: center;
-    gap: 6px;
     padding: 8px 16px;
     background: var(--accent-dim);
-    border: 1px solid rgba(20, 184, 166, 0.15);
+    border: 1px solid rgba(167, 139, 250, 0.15);
     border-radius: 6px;
     color: var(--accent-light);
     font-size: 0.82rem;
@@ -207,8 +204,40 @@ body {
 }
 
 .hero-link:hover {
-    background: rgba(20, 184, 166, 0.18);
+    background: rgba(167, 139, 250, 0.18);
     transform: translateY(-1px);
+}
+
+.hero-scroll {
+    position: absolute;
+    right: 36px;
+    bottom: 40px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 8px;
+}
+
+.hero-scroll span {
+    font-size: 0.65rem;
+    letter-spacing: 0.2em;
+    text-transform: uppercase;
+    color: var(--text-dim);
+    writing-mode: vertical-rl;
+}
+
+.scroll-line {
+    width: 1px;
+    height: 40px;
+    background: linear-gradient(to bottom, var(--accent), transparent);
+    animation: scrollAnim 2s ease-in-out infinite;
+}
+
+@keyframes scrollAnim {
+    0%, 100% { transform: scaleY(0); transform-origin: top; }
+    50% { transform: scaleY(1); transform-origin: top; }
+    51% { transform-origin: bottom; }
+    100% { transform: scaleY(0); transform-origin: bottom; }
 }
 
 /* ============================================
@@ -258,14 +287,14 @@ body {
 .proj-card:hover {
     border-color: var(--border-hover);
     transform: translateY(-3px);
-    box-shadow: 0 20px 50px rgba(0,0,0,0.4);
+    box-shadow: 0 20px 50px rgba(0,0,0,0.5);
 }
 
 .proj-link { display: block; color: inherit; text-decoration: none; }
 
 .proj-visual {
     aspect-ratio: 16/9;
-    background: linear-gradient(135deg, #0e1016 0%, var(--card) 100%);
+    background: linear-gradient(135deg, #0a0d16 0%, var(--card) 100%);
     display: flex;
     justify-content: space-between;
     align-items: flex-start;
@@ -278,7 +307,7 @@ body {
 .proj-visual::after {
     content: '';
     position: absolute;
-    bottom: 0; left: 0; right: 0;
+    bottom: 0; left: 10%; right: 10%;
     height: 1px;
     background: linear-gradient(90deg, transparent, var(--accent-dim), transparent);
     opacity: 0;
@@ -388,7 +417,7 @@ body {
     grid-template-columns: 1.3fr 1fr;
     gap: 48px;
     align-items: start;
-    padding-top: 20px;
+    padding-top: 40px;
     border-top: 1px solid var(--border);
 }
 
@@ -401,11 +430,11 @@ body {
     margin-bottom: 20px;
 }
 
-.about-principles {
+.principles {
     margin-top: 32px;
     display: flex;
     flex-direction: column;
-    gap: 16px;
+    gap: 12px;
 }
 
 .principle {
@@ -517,7 +546,6 @@ body {
 
 .skill-card:hover {
     border-color: var(--accent-dim);
-    background: rgba(22, 24, 29, 0.8);
 }
 
 .skill-card h4 {
@@ -536,7 +564,7 @@ body {
 /* ============================================
    Contact
    ============================================ */
-.contact-sec { text-align: center; }
+.contact { text-align: center; }
 
 .contact-desc {
     color: var(--text-sec);
@@ -567,7 +595,7 @@ body {
 }
 
 .channel:hover {
-    background: #1a1d24;
+    background: #131626;
     padding-left: 26px;
 }
 
@@ -615,7 +643,6 @@ body {
 
 .resume-btn {
     display: inline-flex;
-    align-items: center;
 }
 
 /* ============================================
@@ -638,10 +665,11 @@ body {
    ============================================ */
 @media (max-width: 768px) {
     .header { padding: 14px 20px; }
-    .header-nav { gap: 16px; }
-    .header-nav a { font-size: 0.8rem; }
+    .header-nav { gap: 14px; }
+    .header-nav a { font-size: 0.78rem; }
+    .logo-img { height: 30px; }
     .hero { padding: 80px 20px 40px; }
-    .hero-links { flex-wrap: wrap; }
+    .hero-scroll { display: none; }
     .section { padding: 64px 20px; }
     .proj-grid { grid-template-columns: 1fr; }
     .stats-row { gap: 28px; flex-wrap: wrap; }
@@ -653,12 +681,12 @@ body {
 
 @media (max-width: 480px) {
     .about-meta { grid-template-columns: 1fr; }
-    .hero-buttons { flex-direction: column; }
+    .hero-actions { flex-direction: column; }
     .btn { width: 100%; justify-content: center; }
 }
 
 /* ============================================
-   Reveal
+   Scroll Reveal
    ============================================ */
 [data-reveal] {
     opacity: 0;

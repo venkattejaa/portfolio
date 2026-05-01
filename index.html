@@ -4,17 +4,19 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Venkat Teja — AI Engineer</title>
-    <meta name="description" content="AI Engineer building 768M-parameter LLMs and production systems from scratch.">
+    <meta name="description" content="AI Engineer. Training 768M-parameter LLMs. Building production systems from scratch.">
     <link rel="preconnect" href="https://fonts.googleapis.com">
-    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=DM+Mono:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="style.css">
 </head>
 <body>
-    <div id="bg-canvas"></div>
+    <canvas id="starfield"></canvas>
 
     <!-- Header -->
     <header class="header">
-        <a href="#" class="header-logo">VT</a>
+        <a href="#" class="header-logo">
+            <img src="logo.png" alt="VT" class="logo-img">
+        </a>
         <nav class="header-nav">
             <a href="#work">Work</a>
             <a href="#about">About</a>
@@ -24,86 +26,63 @@
     </header>
 
     <!-- Hero -->
-    <section class="hero">
+    <section class="hero" id="hero">
         <div class="hero-inner">
-            <div class="hero-badge">Available for projects</div>
-            <h1 class="hero-title">
+            <div class="hero-tag reveal-text">Available for projects</div>
+            <h1 class="hero-title" data-split>
                 <span class="hero-row">Building</span>
                 <span class="hero-row accent">intelligent</span>
                 <span class="hero-row">systems</span>
             </h1>
-            <p class="hero-text">
-                AI Engineer & Full-Stack Developer based in India. 
-                I train 768M-parameter LLMs from scratch and ship production-ready applications.
-            </p>
-            <div class="hero-buttons">
+            <p class="hero-desc reveal-text">AI Engineer & Full-Stack Developer. Training 768M-parameter LLMs from scratch.</p>
+            <div class="hero-actions reveal-text">
                 <a href="#contact" class="btn btn-primary">Let's Talk</a>
-                <a href="#work" class="btn btn-outline">View Projects</a>
+                <a href="#work" class="btn btn-outline">View Work</a>
             </div>
-            <div class="hero-links">
-                <a href="https://wa.me/918142579498" target="_blank" class="hero-link">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                    WhatsApp
-                </a>
-                <a href="mailto:venkattejanaik@zohomail.in" class="hero-link">
-                    <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                    Email
-                </a>
+            <div class="hero-links reveal-text">
+                <a href="https://wa.me/918142579498" target="_blank" class="hero-link">WhatsApp</a>
+                <a href="mailto:venkattejanaik@zohomail.in" class="hero-link">Email</a>
                 <a href="https://github.com/venkattejaa" target="_blank" class="hero-link">GitHub</a>
                 <a href="https://linkedin.com/in/sugali-venkata-teja-naik" target="_blank" class="hero-link">LinkedIn</a>
             </div>
         </div>
+        <div class="hero-scroll">
+            <span>Scroll</span>
+            <div class="scroll-line"></div>
+        </div>
     </section>
 
-    <!-- Work -->
+    <!-- Projects -->
     <section class="section" id="work">
         <div class="sec-tag" data-reveal>Selected Work</div>
-        <h2 class="sec-title" data-reveal>Projects I've Built</h2>
+        <h2 class="sec-title" data-split>Projects</h2>
         <div class="proj-grid">
             <article class="proj-card" data-reveal>
                 <a href="https://github.com/venkattejaa/LAXMANA" target="_blank" class="proj-link">
-                    <div class="proj-visual">
-                        <span class="proj-num">01</span>
-                        <span class="proj-status">In Training</span>
-                    </div>
+                    <div class="proj-visual"><span class="proj-num">01</span><span class="proj-status">Training</span></div>
                     <div class="proj-body">
-                        <div class="proj-head">
-                            <h3>LAXMANA</h3>
-                            <span class="proj-arrow">→</span>
-                        </div>
-                        <p>768M parameter multilingual LLM. Custom tokenizer, training pipeline, and transformer architecture — built from the ground up.</p>
+                        <div class="proj-head"><h3>LAXMANA</h3><span class="proj-arrow">→</span></div>
+                        <p>768M parameter multilingual LLM — custom tokenizer, training pipeline, transformer architecture — built entirely from scratch.</p>
                         <div class="proj-tech"><span>PyTorch</span><span>Transformers</span><span>CUDA</span><span>Python</span></div>
                     </div>
                 </a>
             </article>
             <article class="proj-card" data-reveal>
                 <a href="https://github.com/venkattejaa/Ghost-Messenger" target="_blank" class="proj-link">
-                    <div class="proj-visual">
-                        <span class="proj-num">02</span>
-                        <span class="proj-status live">Live</span>
-                    </div>
+                    <div class="proj-visual"><span class="proj-num">02</span><span class="proj-status live">Live</span></div>
                     <div class="proj-body">
-                        <div class="proj-head">
-                            <h3>Ghost Messenger</h3>
-                            <span class="proj-arrow">→</span>
-                        </div>
-                        <p>Secret messaging app disguised as a calculator. Hidden chats, encrypted storage, self-destructing messages. Invisible to anyone who doesn't know it's there.</p>
+                        <div class="proj-head"><h3>Ghost Messenger</h3><span class="proj-arrow">→</span></div>
+                        <p>Secret messaging app disguised as a calculator. Hidden chats, encrypted storage, self-destructing messages.</p>
                         <div class="proj-tech"><span>JavaScript</span><span>React Native</span><span>Encryption</span></div>
                     </div>
                 </a>
             </article>
             <article class="proj-card" data-reveal>
                 <a href="https://github.com/venkattejaa/LAXCODE" target="_blank" class="proj-link">
-                    <div class="proj-visual">
-                        <span class="proj-num">03</span>
-                        <span class="proj-status live">Working</span>
-                    </div>
+                    <div class="proj-visual"><span class="proj-num">03</span><span class="proj-status live">Working</span></div>
                     <div class="proj-body">
-                        <div class="proj-head">
-                            <h3>LAXCODE</h3>
-                            <span class="proj-arrow">→</span>
-                        </div>
-                        <p>AI code assistant with autocomplete, error detection, and smart refactoring. Built with custom LLM integration for real-time code understanding.</p>
+                        <div class="proj-head"><h3>LAXCODE</h3><span class="proj-arrow">→</span></div>
+                        <p>AI code assistant with autocomplete, error detection, and refactoring — powered by custom LLM integration.</p>
                         <div class="proj-tech"><span>Python</span><span>FastAPI</span><span>LLM</span><span>OpenAI</span></div>
                     </div>
                 </a>
@@ -111,65 +90,31 @@
         </div>
     </section>
 
-    <!-- Stats -->
-    <section class="section stats-sec" id="about">
+    <!-- Stats + About -->
+    <section class="section" id="about">
         <div class="stats-row">
-            <div class="stat-item" data-reveal>
-                <span class="stat-num">768M</span>
-                <span class="stat-lbl">Model Parameters</span>
-            </div>
-            <div class="stat-item" data-reveal>
-                <span class="stat-num">3</span>
-                <span class="stat-lbl">Production Systems</span>
-            </div>
-            <div class="stat-item" data-reveal>
-                <span class="stat-num">&lt;24h</span>
-                <span class="stat-lbl">Client Response</span>
-            </div>
-            <div class="stat-item" data-reveal>
-                <span class="stat-num">100%</span>
-                <span class="stat-lbl">Direct Contact</span>
-            </div>
+            <div class="stat-item" data-reveal><span class="stat-num">768M</span><span class="stat-lbl">Parameters</span></div>
+            <div class="stat-item" data-reveal><span class="stat-num">3</span><span class="stat-lbl">Live Systems</span></div>
+            <div class="stat-item" data-reveal><span class="stat-num">&lt;24h</span><span class="stat-lbl">Response</span></div>
+            <div class="stat-item" data-reveal><span class="stat-num">100%</span><span class="stat-lbl">Direct</span></div>
         </div>
-
         <div class="about-block" data-reveal>
             <div class="about-text">
-                <span class="sec-tag">About</span>
-                <h2 class="sec-title">Engineer by trade,<br>builder by nature</h2>
-                <p>I'm Venkat Teja — an AI Engineer and Full-Stack Developer based in India. I build systems from the ground up because I believe real engineering means understanding every layer of the stack.</p>
-                <p>My flagship project LAXMANA is a 768M parameter multilingual LLM I'm training entirely from scratch. No fine-tuning existing models. Custom tokenizer, custom training pipeline, custom architecture decisions. That's the kind of depth I bring to every project.</p>
-                <div class="about-principles">
-                    <div class="principle">
-                        <strong>No shortcuts</strong>
-                        <span>Everything I build, I build to understand.</span>
-                    </div>
-                    <div class="principle">
-                        <strong>Direct communication</strong>
-                        <span>You work with me — not a project manager.</span>
-                    </div>
-                    <div class="principle">
-                        <strong>Open by default</strong>
-                        <span>Code is public. Work is verifiable.</span>
-                    </div>
+                <div class="sec-tag">About</div>
+                <h2 class="sec-title" data-split>Engineer by trade,<br>builder by nature</h2>
+                <p>I'm Venkat Teja — an AI Engineer based in India. I build systems from scratch because real engineering means understanding every layer of the stack.</p>
+                <p>My flagship, LAXMANA, is a 768M parameter multilingual LLM I'm training from the ground up. Custom tokenizer, training pipeline, architecture decisions — no fine-tuning, no shortcuts.</p>
+                <div class="principles">
+                    <div class="principle"><strong>No shortcuts</strong><span>Everything built to understand.</span></div>
+                    <div class="principle"><strong>Direct communication</strong><span>You work with me, not a middleman.</span></div>
+                    <div class="principle"><strong>Open by default</strong><span>Code is public. Work is verifiable.</span></div>
                 </div>
             </div>
             <div class="about-meta">
-                <div class="meta-card">
-                    <span class="meta-lbl">Location</span>
-                    <span class="meta-val">India</span>
-                </div>
-                <div class="meta-card">
-                    <span class="meta-lbl">Availability</span>
-                    <span class="meta-val">Open for projects</span>
-                </div>
-                <div class="meta-card">
-                    <span class="meta-lbl">Response</span>
-                    <span class="meta-val">&lt; 24 hours</span>
-                </div>
-                <div class="meta-card">
-                    <span class="meta-lbl">Experience</span>
-                    <span class="meta-val">Full-Stack + AI</span>
-                </div>
+                <div class="meta-card"><span class="meta-lbl">Location</span><span class="meta-val">India</span></div>
+                <div class="meta-card"><span class="meta-lbl">Availability</span><span class="meta-val">Open</span></div>
+                <div class="meta-card"><span class="meta-lbl">Response</span><span class="meta-val">&lt; 24h</span></div>
+                <div class="meta-card"><span class="meta-lbl">Stack</span><span class="meta-val">AI + Full-Stack</span></div>
             </div>
         </div>
     </section>
@@ -177,93 +122,41 @@
     <!-- Services -->
     <section class="section" id="services">
         <div class="sec-tag" data-reveal>What I Offer</div>
-        <h2 class="sec-title" data-reveal>Services</h2>
+        <h2 class="sec-title" data-split>Services</h2>
         <div class="services-grid">
-            <div class="service-card" data-reveal>
-                <span class="service-num">01</span>
-                <h3>AI & LLM Development</h3>
-                <p>Custom model training, fine-tuning, RAG pipelines, and production ML systems. From research to deployment on your infrastructure.</p>
-            </div>
-            <div class="service-card" data-reveal>
-                <span class="service-num">02</span>
-                <h3>Full-Stack Applications</h3>
-                <p>End-to-end web apps, APIs, and backend systems. React frontends, Python backends, scalable databases, and cloud deployment.</p>
-            </div>
-            <div class="service-card" data-reveal>
-                <span class="service-num">03</span>
-                <h3>Mobile Development</h3>
-                <p>Cross-platform mobile apps with React Native. Clean architecture, smooth UX, and production-ready performance.</p>
-            </div>
-            <div class="service-card" data-reveal>
-                <span class="service-num">04</span>
-                <h3>Technical Consulting</h3>
-                <p>Architecture reviews, code audits, AI strategy. Direct advice from someone who actually builds — not just advises.</p>
-            </div>
+            <div class="service-card" data-reveal><span class="service-num">01</span><h3>AI & LLM Development</h3><p>Custom model training, fine-tuning, RAG pipelines. From research to production deployment.</p></div>
+            <div class="service-card" data-reveal><span class="service-num">02</span><h3>Full-Stack Applications</h3><p>End-to-end web apps, APIs, backend systems. React, Python, scalable databases.</p></div>
+            <div class="service-card" data-reveal><span class="service-num">03</span><h3>Mobile Development</h3><p>Cross-platform apps with React Native. Clean architecture, smooth UX, production-ready.</p></div>
+            <div class="service-card" data-reveal><span class="service-num">04</span><h3>Technical Consulting</h3><p>Architecture reviews, AI strategy, code audits. Direct advice from someone who builds.</p></div>
         </div>
     </section>
 
     <!-- Skills -->
-    <section class="section skills-sec" id="skills">
+    <section class="section" id="skills">
         <div class="sec-tag" data-reveal>Toolkit</div>
-        <h2 class="sec-title" data-reveal>Technologies I Use</h2>
+        <h2 class="sec-title" data-split>Technologies</h2>
         <div class="skills-grid">
             <div class="skill-card" data-reveal><h4>AI / ML</h4><p>PyTorch, Transformers, HuggingFace, CUDA, NLP, LLMs, TensorFlow</p></div>
-            <div class="skill-card" data-reveal><h4>Backend</h4><p>Python, Node.js, FastAPI, Django, PostgreSQL, Redis, REST, GraphQL</p></div>
+            <div class="skill-card" data-reveal><h4>Backend</h4><p>Python, Node.js, FastAPI, Django, PostgreSQL, Redis, GraphQL</p></div>
             <div class="skill-card" data-reveal><h4>Frontend</h4><p>React, Next.js, TypeScript, JavaScript, HTML/CSS, Tailwind</p></div>
-            <div class="skill-card" data-reveal><h4>Mobile & Infra</h4><p>React Native, Docker, Linux, Git, CI/CD, Cloud (AWS/GCP), Android</p></div>
+            <div class="skill-card" data-reveal><h4>Mobile & Infra</h4><p>React Native, Docker, Linux, Git, CI/CD, Cloud (AWS/GCP)</p></div>
         </div>
     </section>
 
     <!-- Contact -->
-    <section class="section contact-sec" id="contact">
+    <section class="section contact" id="contact">
         <div class="sec-tag" data-reveal>Contact</div>
-        <h2 class="sec-title" data-reveal>Let's build</h2>
-        <p class="contact-desc" data-reveal>I respond within 24 hours. No middlemen, no agencies — just direct communication.</p>
+        <h2 class="sec-title" data-split>Let's build</h2>
+        <p class="contact-desc" data-reveal>I respond within 24 hours. No agencies — just direct communication.</p>
         <div class="contact-channels" data-reveal>
-            <a href="https://wa.me/918142579498" target="_blank" class="channel">
-                <span class="channel-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg>
-                </span>
-                <span class="channel-info">
-                    <span class="channel-lbl">WhatsApp</span>
-                    <span class="channel-val">+91 81425 79498</span>
-                </span>
-                <span class="channel-arr">→</span>
-            </a>
-            <a href="mailto:venkattejanaik@zohomail.in" class="channel">
-                <span class="channel-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg>
-                </span>
-                <span class="channel-info">
-                    <span class="channel-lbl">Email</span>
-                    <span class="channel-val">venkattejanaik@zohomail.in</span>
-                </span>
-                <span class="channel-arr">→</span>
-            </a>
-            <a href="https://github.com/venkattejaa" target="_blank" class="channel">
-                <span class="channel-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"></path></svg>
-                </span>
-                <span class="channel-info">
-                    <span class="channel-lbl">GitHub</span>
-                    <span class="channel-val">github.com/venkattejaa</span>
-                </span>
-                <span class="channel-arr">→</span>
-            </a>
-            <a href="https://linkedin.com/in/sugali-venkata-teja-naik" target="_blank" class="channel">
-                <span class="channel-icon">
-                    <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg>
-                </span>
-                <span class="channel-info">
-                    <span class="channel-lbl">LinkedIn</span>
-                    <span class="channel-val">linkedin.com/in/sugali-venkata-teja-naik</span>
-                </span>
-                <span class="channel-arr">→</span>
-            </a>
+            <a href="https://wa.me/918142579498" target="_blank" class="channel"><div class="channel-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M21 15a2 2 0 0 1-2 2H7l-4 4V5a2 2 0 0 1 2-2h14a2 2 0 0 1 2 2z"/></svg></div><div class="channel-info"><span class="channel-lbl">WhatsApp</span><span class="channel-val">+91 81425 79498</span></div><span class="channel-arr">→</span></a>
+            <a href="mailto:venkattejanaik@zohomail.in" class="channel"><div class="channel-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 4h16c1.1 0 2 .9 2 2v12c0 1.1-.9 2-2 2H4c-1.1 0-2-.9-2-2V6c0-1.1.9-2 2-2z"/><polyline points="22,6 12,13 2,6"/></svg></div><div class="channel-info"><span class="channel-lbl">Email</span><span class="channel-val">venkattejanaik@zohomail.in</span></div><span class="channel-arr">→</span></a>
+            <a href="https://github.com/venkattejaa" target="_blank" class="channel"><div class="channel-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M9 19c-5 1.5-5-2.5-7-3m14 6v-3.87a3.37 3.37 0 0 0-.94-2.61c3.14-.35 6.44-1.54 6.44-7A5.44 5.44 0 0 0 20 4.77 5.07 5.07 0 0 0 19.91 1S18.73.65 16 2.48a13.38 13.38 0 0 0-7 0C6.27.65 5.09 1 5.09 1A5.07 5.07 0 0 0 5 4.77a5.44 5.44 0 0 0-1.5 3.78c0 5.42 3.3 6.61 6.44 7A3.37 3.37 0 0 0 9 18.13V22"/></svg></div><div class="channel-info"><span class="channel-lbl">GitHub</span><span class="channel-val">github.com/venkattejaa</span></div><span class="channel-arr">→</span></a>
+            <a href="https://linkedin.com/in/sugali-venkata-teja-naik" target="_blank" class="channel"><div class="channel-icon"><svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M16 8a6 6 0 0 1 6 6v7h-4v-7a2 2 0 0 0-2-2 2 2 0 0 0-2 2v7h-4v-7a6 6 0 0 1 6-6z"/><rect x="2" y="9" width="4" height="12"/><circle cx="4" cy="4" r="2"/></svg></div><div class="channel-info"><span class="channel-lbl">LinkedIn</span><span class="channel-val">Venkat Teja Naik</span></div><span class="channel-arr">→</span></a>
         </div>
-        <a href="#" class="btn btn-primary resume-btn" onclick="alert('Add your resume PDF and update this link'); return false;">
+        <a href="#" class="btn btn-primary resume-btn" onclick="alert('Add resume PDF to the repo and update this link.'); return false;">
+            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-right:8px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
             Download Resume
-            <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" style="margin-left:8px"><path d="M21 15v4a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2v-4"/><polyline points="7 10 12 15 17 10"/><line x1="12" y1="15" x2="12" y2="3"/></svg>
         </a>
     </section>
 

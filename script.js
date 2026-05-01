@@ -1,95 +1,137 @@
 /* ============================================
-   Venkat Teja — Portfolio
+   Venkat Teja — Cinematic Portfolio
+   Starfield galaxy + dramatic letter reveals
    ============================================ */
 
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ============================================
-   THREE.JS — Morphing wireframe sphere
+   STARFIELD GALAXY
    ============================================ */
 if (!prefersReduced && window.innerWidth > 768) {
-    const container = document.getElementById('bg-canvas');
+    const canvas = document.getElementById('starfield');
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(50, window.innerWidth / window.innerHeight, 0.1, 1000);
-    camera.position.z = 8;
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
+    camera.position.z = 60;
 
-    const renderer = new THREE.WebGLRenderer({ antialias: true, alpha: true });
+    const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
-    container.appendChild(renderer.domElement);
 
-    const color = 0x14b8a6;
+    // Starfield
+    const starCount = 4000;
+    const starGeo = new THREE.BufferGeometry();
+    const starPos = new Float32Array(starCount * 3);
+    const starColors = new Float32Array(starCount * 3);
+    const starSizes = new Float32Array(starCount);
 
-    // Morphing icosahedron
-    const geo = new THREE.IcosahedronGeometry(2, 2);
-    const mat = new THREE.MeshPhysicalMaterial({
-        color,
-        wireframe: true,
-        transparent: true,
-        opacity: 0.12,
-        metalness: 0.2,
-        roughness: 0.8,
-    });
-    const mesh = new THREE.Mesh(geo, mat);
-    scene.add(mesh);
+    const palette = [
+        [1, 1, 1],        // white
+        [0.9, 0.85, 1],   // lavender
+        [0.75, 0.85, 1],  // blue-white
+        [1, 0.95, 0.8],   // warm
+        [0.65, 0.5, 1],   // purple
+    ];
 
-    const positions = geo.attributes.position;
-    const original = positions.array.slice();
-    const offsets = new Float32Array(original.length);
-    for (let i = 0; i < offsets.length; i++) {
-        offsets[i] = 0.5 + Math.random() * 1.5;
+    for (let i = 0; i < starCount; i++) {
+        const radius = 10 + Math.random() * 80;
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos(2 * Math.random() - 1);
+
+        starPos[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
+        starPos[i * 3 + 1] = radius * Math.cos(phi);
+        starPos[i * 3 + 2] = radius * Math.sin(phi) * Math.sin(theta);
+
+        const c = palette[Math.floor(Math.random() * palette.length)];
+        starColors[i * 3] = c[0];
+        starColors[i * 3 + 1] = c[1];
+        starColors[i * 3 + 2] = c[2];
+
+        starSizes[i] = 0.5 + Math.random() * 1.5;
     }
 
-    // Inner glow
-    const innerGeo = new THREE.IcosahedronGeometry(1.6, 1);
-    const innerMat = new THREE.MeshBasicMaterial({
-        color,
-        transparent: true,
-        opacity: 0.03,
-        wireframe: false,
-    });
-    const inner = new THREE.Mesh(innerGeo, innerMat);
-    scene.add(inner);
+    starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
+    starGeo.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
+    starGeo.setAttribute('size', new THREE.BufferAttribute(starSizes, 1));
 
-    // Rings
-    const ringMat = new THREE.MeshBasicMaterial({
-        color,
+    const starMat = new THREE.PointsMaterial({
+        size: 0.3,
+        vertexColors: true,
+        transparent: true,
+        opacity: 0.9,
+        blending: THREE.AdditiveBlending,
+        sizeAttenuation: true,
+    });
+
+    const stars = new THREE.Points(starGeo, starMat);
+    scene.add(stars);
+
+    // Nebula glow particles (inner dense cluster)
+    const nebulaCount = 800;
+    const nebulaGeo = new THREE.BufferGeometry();
+    const nebulaPos = new Float32Array(nebulaCount * 3);
+
+    for (let i = 0; i < nebulaCount; i++) {
+        const radius = 8 + Math.random() * 20;
+        const theta = Math.random() * Math.PI * 2;
+        const phi = Math.acos(2 * Math.random() - 1);
+
+        nebulaPos[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
+        nebulaPos[i * 3 + 1] = radius * Math.cos(phi) * 0.6;
+        nebulaPos[i * 3 + 2] = radius * Math.sin(phi) * Math.sin(theta);
+    }
+
+    nebulaGeo.setAttribute('position', new THREE.BufferAttribute(nebulaPos, 3));
+
+    const nebulaMat = new THREE.PointsMaterial({
+        size: 0.6,
+        color: 0xa78bfa,
         transparent: true,
         opacity: 0.15,
-        side: THREE.DoubleSide,
+        blending: THREE.AdditiveBlending,
+        sizeAttenuation: true,
     });
-    const r1 = new THREE.Mesh(new THREE.RingGeometry(2.5, 2.6, 80), ringMat);
-    r1.rotation.x = Math.PI / 3;
-    scene.add(r1);
-    const r2 = new THREE.Mesh(new THREE.RingGeometry(3.0, 3.05, 80), ringMat);
-    r2.rotation.z = Math.PI / 3;
-    r2.rotation.x = Math.PI / 4;
-    r2.material = ringMat.clone();
-    r2.material.opacity = 0.08;
-    scene.add(r2);
 
-    // Particles
-    const count = 250;
-    const pPos = new Float32Array(count * 3);
-    for (let i = 0; i < count * 3; i++) {
-        const r = 4 + Math.random() * 6;
+    const nebula = new THREE.Points(nebulaGeo, nebulaMat);
+    scene.add(nebula);
+
+    // Second nebula (blue tint)
+    const nebulaMat2 = new THREE.PointsMaterial({
+        size: 0.4,
+        color: 0x818cf8,
+        transparent: true,
+        opacity: 0.1,
+        blending: THREE.AdditiveBlending,
+        sizeAttenuation: true,
+    });
+    const nebula2 = new THREE.Points(nebulaGeo.clone(), nebulaMat2);
+    nebula2.rotation.x = 0.8;
+    nebula2.rotation.z = 0.5;
+    scene.add(nebula2);
+
+    // Shooting stars layer
+    const shootCount = 100;
+    const shootGeo = new THREE.BufferGeometry();
+    const shootPos = new Float32Array(shootCount * 3);
+    for (let i = 0; i < shootCount; i++) {
+        const r = 30 + Math.random() * 50;
         const t = Math.random() * Math.PI * 2;
         const p = Math.acos(2 * Math.random() - 1);
-        pPos[i * 3] = r * Math.sin(p) * Math.cos(t);
-        pPos[i * 3 + 1] = r * Math.sin(p) * Math.sin(t);
-        pPos[i * 3 + 2] = r * Math.cos(p);
+        shootPos[i * 3] = r * Math.sin(p) * Math.cos(t);
+        shootPos[i * 3 + 1] = r * Math.cos(p) * 0.3;
+        shootPos[i * 3 + 2] = r * Math.sin(p) * Math.sin(t);
     }
-    const pGeo = new THREE.BufferGeometry();
-    pGeo.setAttribute('position', new THREE.BufferAttribute(pPos, 3));
-    const pMat = new THREE.PointsMaterial({
-        size: 0.02,
-        color,
+    shootGeo.setAttribute('position', new THREE.BufferAttribute(shootPos, 3));
+    const shootMat = new THREE.PointsMaterial({
+        size: 0.15,
+        color: 0xc4b5fd,
         transparent: true,
-        opacity: 0.25,
+        opacity: 0.4,
         blending: THREE.AdditiveBlending,
+        sizeAttenuation: true,
     });
-    const particles = new THREE.Points(pGeo, pMat);
-    scene.add(particles);
+    const shootingStars = new THREE.Points(shootGeo, shootMat);
+    scene.add(shootingStars);
 
     let mx = 0, my = 0, tx = 0, ty = 0;
     document.addEventListener('mousemove', (e) => {
@@ -100,40 +142,27 @@ if (!prefersReduced && window.innerWidth > 768) {
     let scrollY = 0;
     window.addEventListener('scroll', () => { scrollY = window.pageYOffset; }, { passive: true });
 
-    let t = 0;
     function animate() {
         requestAnimationFrame(animate);
-        t += 0.005;
 
-        tx += (mx - tx) * 0.02;
-        ty += (my - ty) * 0.02;
+        tx += (mx - tx) * 0.01;
+        ty += (my - ty) * 0.01;
 
-        const pos = geo.attributes.position;
-        const arr = pos.array;
-        for (let i = 0; i < arr.length; i += 3) {
-            const idx = i / 3;
-            const m = 1 + Math.sin(t + idx * 0.3) * 0.3 * offsets[idx];
-            arr[i] = original[i] * m;
-            arr[i + 1] = original[i + 1] * m;
-            arr[i + 2] = original[i + 2] * m;
-        }
-        pos.needsUpdate = true;
+        stars.rotation.y += 0.0002 + tx * 0.0001;
+        stars.rotation.x += ty * 0.00005;
 
-        mesh.rotation.x += 0.002 + ty * 0.01;
-        mesh.rotation.y += 0.004 + tx * 0.01;
-        inner.rotation.x += 0.001;
-        inner.rotation.y += 0.002;
-        r1.rotation.z += 0.002;
-        r2.rotation.y += 0.001;
+        nebula.rotation.y += 0.0004;
+        nebula.rotation.x += Math.sin(Date.now() * 0.0003) * 0.0002;
 
-        const sy = scrollY * 0.0003;
-        mesh.position.y = -sy;
-        inner.position.y = -sy;
-        r1.position.y = -sy;
-        r2.position.y = -sy;
+        nebula2.rotation.z += 0.0003;
 
-        particles.rotation.x += 0.0001;
-        particles.rotation.y += 0.0002;
+        shootingStars.rotation.y += 0.0001;
+
+        const sy = scrollY * 0.0002;
+        stars.position.y = -sy;
+        nebula.position.y = -sy;
+        nebula2.position.y = -sy;
+        shootingStars.position.y = -sy;
 
         renderer.render(scene, camera);
     }
@@ -147,19 +176,23 @@ if (!prefersReduced && window.innerWidth > 768) {
 }
 
 /* ============================================
-   GSAP
+   CINEMATIC TEXT ANIMATIONS
    ============================================ */
 if (!prefersReduced) {
     gsap.registerPlugin(ScrollTrigger);
 
+    // Hero timeline
     const tl = gsap.timeline({ defaults: { ease: 'power3.out' } });
+
     tl
-        .to('.hero-badge', { opacity: 1, y: 0, duration: 0.6, delay: 0.2 })
-        .to('.hero-row', { opacity: 1, y: 0, duration: 0.8, stagger: 0.12 }, '-=0.3')
-        .to('.hero-text', { opacity: 1, y: 0, duration: 0.6 }, '-=0.5')
-        .to('.hero-buttons', { opacity: 1, y: 0, duration: 0.6 }, '-=0.3')
+        .set('.hero-tag, .hero-row, .hero-desc, .hero-actions, .hero-links', { opacity: 0, y: 30 })
+        .to('.hero-tag', { opacity: 1, y: 0, duration: 0.6, delay: 0.3 })
+        .to('.hero-row', { opacity: 1, y: 0, duration: 0.8, stagger: 0.15 }, '-=0.3')
+        .to('.hero-desc', { opacity: 1, y: 0, duration: 0.6 }, '-=0.5')
+        .to('.hero-actions', { opacity: 1, y: 0, duration: 0.6 }, '-=0.3')
         .to('.hero-links', { opacity: 1, y: 0, duration: 0.6 }, '-=0.2');
 
+    // Scroll reveal via data-reveal
     gsap.utils.toArray('[data-reveal]').forEach((el) => {
         ScrollTrigger.create({
             trigger: el,
@@ -168,12 +201,59 @@ if (!prefersReduced) {
         });
     });
 
+    // Split text animation for [data-split] elements
+    function splitAndAnimate(element) {
+        const text = element.textContent.trim();
+        element.textContent = '';
+        element.style.display = 'block';
+
+        const words = text.split(/\s+/);
+        words.forEach((word, wi) => {
+            const wordSpan = document.createElement('span');
+            wordSpan.style.display = 'inline-block';
+            wordSpan.style.overflow = 'hidden';
+            wordSpan.style.verticalAlign = 'top';
+            wordSpan.style.marginRight = '0.3em';
+
+            [...word].forEach((char) => {
+                const charSpan = document.createElement('span');
+                charSpan.textContent = char;
+                charSpan.style.display = 'inline-block';
+                charSpan.style.transform = 'translateY(105%)';
+                charSpan.style.opacity = '0';
+                wordSpan.appendChild(charSpan);
+            });
+
+            element.appendChild(wordSpan);
+        });
+
+        // Animate on scroll
+        ScrollTrigger.create({
+            trigger: element,
+            start: 'top 80%',
+            onEnter: () => {
+                const chars = element.querySelectorAll('span > span');
+                gsap.to(chars, {
+                    y: 0,
+                    opacity: 1,
+                    duration: 0.6,
+                    stagger: 0.02,
+                    ease: 'power3.out',
+                });
+            },
+            once: true,
+        });
+    }
+
+    document.querySelectorAll('[data-split]').forEach(splitAndAnimate);
+
+    // Header hide/show
     const header = document.querySelector('.header');
     let lastScroll = 0;
     window.addEventListener('scroll', () => {
         const cur = window.pageYOffset;
         header.style.transform = cur > lastScroll && cur > 200 ? 'translateY(-100%)' : 'translateY(0)';
-        header.style.transition = 'transform 0.4s var(--ease)';
+        header.style.transition = 'transform 0.4s cubic-bezier(0.16, 1, 0.3, 1)';
         lastScroll = cur;
     }, { passive: true });
 }
@@ -188,4 +268,4 @@ document.querySelectorAll('a[href^="#"]').forEach(a => {
     });
 });
 
-console.log('Portfolio loaded');
+console.log('🌌 Cinematic Portfolio Loaded');
