@@ -184,28 +184,34 @@ canvas#starfield {
     color: var(--accent);
 }
 
-.hero-links {
+.hero-direct {
     display: flex;
+    gap: 12px;
     flex-wrap: wrap;
-    gap: 8px;
 }
 
-.hero-link {
+.direct-btn {
     display: inline-flex;
-    padding: 8px 16px;
-    background: var(--accent-dim);
-    border: 1px solid rgba(167, 139, 250, 0.15);
-    border-radius: 6px;
-    color: var(--accent-light);
-    font-size: 0.82rem;
-    font-weight: 500;
+    align-items: center;
+    gap: 8px;
+    padding: 14px 28px;
+    background: var(--accent);
+    color: var(--bg);
+    font-weight: 600;
+    font-size: 0.9rem;
     text-decoration: none;
-    transition: all 0.25s ease;
+    border-radius: 8px;
+    transition: all 0.3s ease;
 }
 
-.hero-link:hover {
-    background: rgba(167, 139, 250, 0.18);
-    transform: translateY(-1px);
+.direct-btn:hover {
+    background: var(--accent-light);
+    transform: translateY(-2px);
+    box-shadow: 0 8px 28px var(--accent-glow);
+}
+
+.direct-btn svg {
+    flex-shrink: 0;
 }
 
 .hero-scroll {

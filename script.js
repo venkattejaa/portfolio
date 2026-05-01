@@ -6,133 +6,161 @@
 const prefersReduced = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
 
 /* ============================================
-   STARFIELD GALAXY
+   REALISTIC SPACE SCENE
+   Deep galaxy with spiral arms, nebulas, star types
    ============================================ */
 if (!prefersReduced && window.innerWidth > 768) {
     const canvas = document.getElementById('starfield');
     const scene = new THREE.Scene();
-    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 2000);
-    camera.position.z = 60;
+    const camera = new THREE.PerspectiveCamera(60, window.innerWidth / window.innerHeight, 0.1, 2000);
+    camera.position.z = 80;
 
     const renderer = new THREE.WebGLRenderer({ canvas, alpha: true, antialias: true });
     renderer.setSize(window.innerWidth, window.innerHeight);
     renderer.setPixelRatio(Math.min(window.devicePixelRatio, 2));
+    renderer.toneMapping = THREE.ACESFilmicToneMapping;
+    renderer.toneMappingExposure = 1.2;
 
-    // Starfield
-    const starCount = 4000;
+    // ─── Stars with realistic distribution ───
+    const starCount = 7000;
     const starGeo = new THREE.BufferGeometry();
-    const starPos = new Float32Array(starCount * 3);
-    const starColors = new Float32Array(starCount * 3);
-    const starSizes = new Float32Array(starCount);
+    const posArr = new Float32Array(starCount * 3);
+    const colArr = new Float32Array(starCount * 3);
+    const sizeArr = new Float32Array(starCount);
 
-    const palette = [
-        [1, 1, 1],        // white
-        [0.9, 0.85, 1],   // lavender
-        [0.75, 0.85, 1],  // blue-white
-        [1, 0.95, 0.8],   // warm
-        [0.65, 0.5, 1],   // purple
+    // Star type distribution (realistic: mostly M-dwarfs, some giants)
+    const starTypes = [
+        { color: [0.4, 0.3, 0.2], sizeRange: [0.1, 0.15], weight: 0.08 },  // Red dwarf
+        { color: [0.9, 0.7, 0.5], sizeRange: [0.15, 0.25], weight: 0.1 },  // Orange dwarf
+        { color: [1, 0.95, 0.8], sizeRange: [0.2, 0.4], weight: 0.25 },    // Yellow (G-type)
+        { color: [0.95, 0.9, 1], sizeRange: [0.15, 0.3], weight: 0.25 },    // White (F-type)
+        { color: [0.8, 0.85, 1], sizeRange: [0.25, 0.5], weight: 0.15 },    // Blue-white
+        { color: [0.5, 0.6, 1], sizeRange: [0.3, 0.6], weight: 0.1 },       // Blue
+        { color: [1, 0.2, 0.05], sizeRange: [0.4, 0.8], weight: 0.04 },     // Red giant
+        { color: [0.3, 0.5, 1], sizeRange: [0.5, 1], weight: 0.03 },        // Blue giant
     ];
 
-    for (let i = 0; i < starCount; i++) {
-        const radius = 10 + Math.random() * 80;
-        const theta = Math.random() * Math.PI * 2;
-        const phi = Math.acos(2 * Math.random() - 1);
+    // Cumulative weights
+    const cumWeights = [];
+    let totalW = 0;
+    starTypes.forEach(t => { totalW += t.weight; cumWeights.push(totalW); });
 
-        starPos[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
-        starPos[i * 3 + 1] = radius * Math.cos(phi);
-        starPos[i * 3 + 2] = radius * Math.sin(phi) * Math.sin(theta);
-
-        const c = palette[Math.floor(Math.random() * palette.length)];
-        starColors[i * 3] = c[0];
-        starColors[i * 3 + 1] = c[1];
-        starColors[i * 3 + 2] = c[2];
-
-        starSizes[i] = 0.5 + Math.random() * 1.5;
+    function pickStarType() {
+        const r = Math.random() * totalW;
+        for (let i = 0; i < cumWeights.length; i++) {
+            if (r < cumWeights[i]) return starTypes[i];
+        }
+        return starTypes[0];
     }
 
-    starGeo.setAttribute('position', new THREE.BufferAttribute(starPos, 3));
-    starGeo.setAttribute('color', new THREE.BufferAttribute(starColors, 3));
-    starGeo.setAttribute('size', new THREE.BufferAttribute(starSizes, 1));
+    for (let i = 0; i < starCount; i++) {
+        // Galaxy disk shape: dense center, thin disk
+        const isCore = i < starCount * 0.1;
+        let radius, theta, phi;
+
+        if (isCore) {
+            // Dense galactic core
+            radius = 2 + Math.random() * 6;
+            theta = Math.random() * Math.PI * 2;
+            phi = Math.acos(2 * Math.random() - 1);
+        } else {
+            // Spiral disk with arms
+            const armOffset = ((i - starCount * 0.1) % 4) * 0.5; // 4 spiral arms
+            const dist = 6 + Math.random() * 50;
+            const spiralAngle = dist * 0.3 + armOffset + (Math.random() - 0.5) * 0.3;
+            radius = dist;
+            theta = spiralAngle;
+            phi = Math.PI / 2 + (Math.random() - 0.5) * 0.15; // thin disk
+        }
+
+        const x = radius * Math.sin(phi) * Math.cos(theta);
+        const y = radius * Math.cos(phi) * (isCore ? 0.8 : 0.15);
+        const z = radius * Math.sin(phi) * Math.sin(theta);
+
+        posArr[i * 3] = x;
+        posArr[i * 3 + 1] = y;
+        posArr[i * 3 + 2] = z;
+
+        const type = pickStarType();
+        const c = type.color;
+        const size = type.sizeRange[0] + Math.random() * (type.sizeRange[1] - type.sizeRange[0]);
+
+        colArr[i * 3] = c[0];
+        colArr[i * 3 + 1] = c[1];
+        colArr[i * 3 + 2] = c[2];
+        sizeArr[i] = size;
+    }
+
+    starGeo.setAttribute('position', new THREE.BufferAttribute(posArr, 3));
+    starGeo.setAttribute('color', new THREE.BufferAttribute(colArr, 3));
+    starGeo.setAttribute('size', new THREE.BufferAttribute(sizeArr, 1));
 
     const starMat = new THREE.PointsMaterial({
-        size: 0.3,
+        size: 0.4,
         vertexColors: true,
         transparent: true,
-        opacity: 0.9,
+        opacity: 0.95,
         blending: THREE.AdditiveBlending,
         sizeAttenuation: true,
+        depthWrite: false,
     });
-
     const stars = new THREE.Points(starGeo, starMat);
     scene.add(stars);
 
-    // Nebula glow particles (inner dense cluster)
-    const nebulaCount = 800;
-    const nebulaGeo = new THREE.BufferGeometry();
-    const nebulaPos = new Float32Array(nebulaCount * 3);
-
-    for (let i = 0; i < nebulaCount; i++) {
-        const radius = 8 + Math.random() * 20;
-        const theta = Math.random() * Math.PI * 2;
-        const phi = Math.acos(2 * Math.random() - 1);
-
-        nebulaPos[i * 3] = radius * Math.sin(phi) * Math.cos(theta);
-        nebulaPos[i * 3 + 1] = radius * Math.cos(phi) * 0.6;
-        nebulaPos[i * 3 + 2] = radius * Math.sin(phi) * Math.sin(theta);
+    // ─── Deep nebula glow layers ───
+    function createNebula(count, color, size, opacity, spread, flatten) {
+        const g = new THREE.BufferGeometry();
+        const p = new Float32Array(count * 3);
+        for (let i = 0; i < count * 3; i += 3) {
+            const r = spread[0] + Math.random() * (spread[1] - spread[0]);
+            const t = Math.random() * Math.PI * 2;
+            const ph = Math.acos(2 * Math.random() - 1);
+            p[i] = r * Math.sin(ph) * Math.cos(t);
+            p[i + 1] = r * Math.cos(ph) * flatten;
+            p[i + 2] = r * Math.sin(ph) * Math.sin(t);
+        }
+        g.setAttribute('position', new THREE.BufferAttribute(p, 3));
+        const m = new THREE.PointsMaterial({ size, color, transparent: true, opacity, blending: THREE.AdditiveBlending, sizeAttenuation: true, depthWrite: false });
+        return new THREE.Points(g, m);
     }
 
-    nebulaGeo.setAttribute('position', new THREE.BufferAttribute(nebulaPos, 3));
+    const nebCore = createNebula(800, 0xa78bfa, 1.0, 0.12, [3, 12], 0.5);
+    const nebMid = createNebula(600, 0x818cf8, 0.8, 0.08, [8, 25], 0.3);
+    const nebOuter = createNebula(400, 0x6366f1, 0.6, 0.05, [20, 45], 0.2);
+    const nebWarm = createNebula(300, 0xf472b6, 0.7, 0.04, [15, 35], 0.3);
 
-    const nebulaMat = new THREE.PointsMaterial({
-        size: 0.6,
-        color: 0xa78bfa,
-        transparent: true,
-        opacity: 0.15,
-        blending: THREE.AdditiveBlending,
-        sizeAttenuation: true,
-    });
+    scene.add(nebCore);
+    scene.add(nebMid);
+    scene.add(nebOuter);
+    scene.add(nebWarm);
 
-    const nebula = new THREE.Points(nebulaGeo, nebulaMat);
-    scene.add(nebula);
-
-    // Second nebula (blue tint)
-    const nebulaMat2 = new THREE.PointsMaterial({
-        size: 0.4,
-        color: 0x818cf8,
-        transparent: true,
-        opacity: 0.1,
-        blending: THREE.AdditiveBlending,
-        sizeAttenuation: true,
-    });
-    const nebula2 = new THREE.Points(nebulaGeo.clone(), nebulaMat2);
-    nebula2.rotation.x = 0.8;
-    nebula2.rotation.z = 0.5;
-    scene.add(nebula2);
-
-    // Shooting stars layer
-    const shootCount = 100;
-    const shootGeo = new THREE.BufferGeometry();
-    const shootPos = new Float32Array(shootCount * 3);
-    for (let i = 0; i < shootCount; i++) {
-        const r = 30 + Math.random() * 50;
+    // ─── Dust lane particles ───
+    const dustCount = 2000;
+    const dustGeo = new THREE.BufferGeometry();
+    const dustPos = new Float32Array(dustCount * 3);
+    const dustSizes = new Float32Array(dustCount);
+    for (let i = 0; i < dustCount; i++) {
+        const r = 4 + Math.random() * 40;
         const t = Math.random() * Math.PI * 2;
-        const p = Math.acos(2 * Math.random() - 1);
-        shootPos[i * 3] = r * Math.sin(p) * Math.cos(t);
-        shootPos[i * 3 + 1] = r * Math.cos(p) * 0.3;
-        shootPos[i * 3 + 2] = r * Math.sin(p) * Math.sin(t);
+        const yOff = (Math.random() - 0.5) * 0.4;
+        dustPos[i * 3] = r * Math.cos(t);
+        dustPos[i * 3 + 1] = yOff;
+        dustPos[i * 3 + 2] = r * Math.sin(t);
+        dustSizes[i] = 0.05 + Math.random() * 0.15;
     }
-    shootGeo.setAttribute('position', new THREE.BufferAttribute(shootPos, 3));
-    const shootMat = new THREE.PointsMaterial({
-        size: 0.15,
-        color: 0xc4b5fd,
+    dustGeo.setAttribute('position', new THREE.BufferAttribute(dustPos, 3));
+    const dustMat = new THREE.PointsMaterial({
+        size: 0.1,
+        color: 0x1a1a2e,
         transparent: true,
-        opacity: 0.4,
-        blending: THREE.AdditiveBlending,
+        opacity: 0.25,
         sizeAttenuation: true,
+        depthWrite: false,
     });
-    const shootingStars = new THREE.Points(shootGeo, shootMat);
-    scene.add(shootingStars);
+    const dust = new THREE.Points(dustGeo, dustMat);
+    scene.add(dust);
 
+    // ─── Mouse + scroll ───
     let mx = 0, my = 0, tx = 0, ty = 0;
     document.addEventListener('mousemove', (e) => {
         mx = (e.clientX / window.innerWidth) * 2 - 1;
@@ -142,27 +170,30 @@ if (!prefersReduced && window.innerWidth > 768) {
     let scrollY = 0;
     window.addEventListener('scroll', () => { scrollY = window.pageYOffset; }, { passive: true });
 
+    // ─── Animation ───
     function animate() {
         requestAnimationFrame(animate);
 
-        tx += (mx - tx) * 0.01;
-        ty += (my - ty) * 0.01;
+        tx += (mx - tx) * 0.008;
+        ty += (my - ty) * 0.008;
 
-        stars.rotation.y += 0.0002 + tx * 0.0001;
-        stars.rotation.x += ty * 0.00005;
+        stars.rotation.y += 0.00015 + tx * 0.0001;
+        stars.rotation.x += ty * 0.00004;
 
-        nebula.rotation.y += 0.0004;
-        nebula.rotation.x += Math.sin(Date.now() * 0.0003) * 0.0002;
+        nebCore.rotation.y += 0.0003;
+        nebMid.rotation.y -= 0.0002;
+        nebOuter.rotation.y += 0.00015;
+        nebWarm.rotation.y += 0.0001;
 
-        nebula2.rotation.z += 0.0003;
+        dust.rotation.y += 0.00005;
 
-        shootingStars.rotation.y += 0.0001;
-
-        const sy = scrollY * 0.0002;
+        const sy = scrollY * 0.00015;
         stars.position.y = -sy;
-        nebula.position.y = -sy;
-        nebula2.position.y = -sy;
-        shootingStars.position.y = -sy;
+        nebCore.position.y = -sy;
+        nebMid.position.y = -sy;
+        nebOuter.position.y = -sy;
+        nebWarm.position.y = -sy;
+        dust.position.y = -sy;
 
         renderer.render(scene, camera);
     }
