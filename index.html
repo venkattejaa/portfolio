@@ -100,9 +100,9 @@ a{color:inherit;text-decoration:none}
       <div style="position:absolute;inset:0;background:radial-gradient(circle at 50% 50%,rgba(192,168,130,.06),transparent 70%)"></div>
     </div>
     <div class="pcard-inner">
-      <div class="pcard-num">For Any Business</div>
+      <div class="pcard-num">Android · Complete</div>
       <div class="pcard-title">Ghost Messenger</div>
-      <div class="pcard-desc">Secret messaging hidden inside a calculator. Your competition won't even know it exists. End-to-end encrypted.</div>
+      <div class="pcard-desc">Secret messaging hidden inside a calculator. End-to-end encrypted, WebRTC calls, Firebase backend.</div>
       <div class="pcard-tags"><span>Android</span><span>Encryption</span><span>Complete</span></div>
     </div>
   </a>
@@ -116,7 +116,7 @@ a{color:inherit;text-decoration:none}
     <div class="pcard-inner">
       <div class="pcard-num">Published</div>
       <div class="pcard-title">Laxcode AI</div>
-      <div class="pcard-desc">Codes entire applications for you. Just describe what you want. Built with NVIDIA, OpenAI, and Anthropic.</div>
+      <div class="pcard-desc">Agentic terminal assistant. Reads your codebase, writes and runs code autonomously. Multi-provider LLM backend.</div>
       <div class="pcard-tags"><span>Python</span><span>AI</span><span>NVIDIA</span></div>
     </div>
   </a>
@@ -130,16 +130,16 @@ a{color:inherit;text-decoration:none}
     <div class="pcard-inner">
       <div class="pcard-num">Research</div>
       <div class="pcard-title">Laxmana LLM</div>
-      <div class="pcard-desc">768 million parameters. Built from zero — no shortcuts. Like ChatGPT, but entirely mine.</div>
+      <div class="pcard-desc">768M parameter multilingual transformer. GQA, RoPE, SwiGLU. No fine-tuning, no shortcuts. Built from zero.</div>
       <div class="pcard-tags"><span>PyTorch</span><span>CUDA</span><span>Training</span></div>
     </div>
   </a>
 </div>
 
 <div class="trust">
-  <div class="sec-label">Why Me</div>
-  <div class="trust-quote">"I build real systems while others follow tutorials."</div>
-  <div class="trust-source">Venkat Teja, Guntakal — Available worldwide</div>
+  <div class="sec-label">Proof</div>
+  <div class="trust-quote">768M parameter LLM built from zero. No fine-tuning, no shortcuts.</div>
+  <div class="trust-source">Venkat Teja, Guntakal</div>
 </div>
 
 <section class="contact-section" id="contact">
@@ -151,7 +151,11 @@ a{color:inherit;text-decoration:none}
     WhatsApp: +91 81425 79498
   </a>
   <br><a href="mailto:venkattejanaik@zohomail.in" class="contact-btn-sec">Email Me</a>
-  <div class="contact-info">Guntakal, Andhra Pradesh</div>
+  <div class="contact-info" style="display:flex;justify-content:center;gap:2rem;margin-top:2.5rem;flex-wrap:wrap">
+    <a href="https://github.com/venkattejaa" target="_blank" rel="noopener" style="color:rgba(246,243,239,.4);font-size:.78rem;transition:color .3s" onmouseover="this.style.color='#c0a882'" onmouseout="this.style.color='rgba(246,243,239,.4)'">GitHub</a>
+    <a href="https://linkedin.com/in/sugali-venkata-teja-naik" target="_blank" rel="noopener" style="color:rgba(246,243,239,.4);font-size:.78rem;transition:color .3s" onmouseover="this.style.color='#c0a882'" onmouseout="this.style.color='rgba(246,243,239,.4)'">LinkedIn</a>
+    <span style="color:rgba(246,243,239,.2);font-size:.78rem">Guntakal, AP</span>
+  </div>
 </section>
 
 <div class="footer">
@@ -163,7 +167,7 @@ a{color:inherit;text-decoration:none}
 const c=document.getElementById('gold-canvas'),x=c.getContext('2d');let W,H,sty=0;
 function rs(){W=c.width=window.innerWidth;H=c.height=window.innerHeight}rs();window.addEventListener('resize',rs);window.addEventListener('scroll',()=>sty=window.scrollY);
 const P=[],S=[];for(let i=0;i<40;i++)P.push({x:Math.random()*W,y:Math.random()*H,vx:(Math.random()-.5)*.4,vy:(Math.random()-.5)*.4,r:Math.random()*2+.5,o:Math.random()*.3+.08,td:Math.random()*100,dy:0});for(let i=0;i<15;i++)S.push({x:Math.random()*W,y:Math.random()*H,angle:Math.random()*Math.PI*2,speed:Math.random()*.008+.003,len:Math.random()*80+40,td:Math.random()*100});
-function d(){x.fillStyle='rgba(2,2,2,.12)';x.fillRect(0,0,W,H);
+function d(){x.fillStyle='rgba(2,2,2,.25)';x.fillRect(0,0,W,H);
   S.forEach(s=>{s.td+=.015;s.angle+=s.speed;const ax=s.x+Math.cos(s.angle)*s.len;const ay=s.y+Math.sin(s.angle)*s.len;x.beginPath();x.moveTo(s.x,s.y+sty*.02);x.bezierCurveTo(s.x+20,s.y+10+sty*.015,s.x+40,s.y-10+sty*.01,ax,ay+sty*.02);x.strokeStyle=`rgba(192,168,130,${.15+Math.sin(s.td)*.08})`;x.lineWidth=.8;x.stroke()});
   P.forEach(p=>{p.td+=.012;p.y+=(p.vy-Math.sin(p.td)*.3)*.5;p.x+=(p.vx+Math.cos(p.td)*.4)*.5;if(p.x<0)p.x=W;if(p.x>W)p.x=0;if(p.y<0)p.y=H;if(p.y>H)p.y=0;x.beginPath();x.arc(p.x,p.y,p.r,0,Math.PI*2);x.fillStyle=`rgba(192,168,130,${p.o})`;x.fill();x.beginPath();x.moveTo(p.x,p.y);x.lineTo(p.x-p.vx*10,p.y-p.vy*10);x.strokeStyle=`rgba(192,168,130,${p.o*.35})`;x.lineWidth=.5;x.stroke();for(let i=0;i<40;i++){const o=P[i];if(o===p)continue;const dx=o.x-p.x,dy=o.y-p.y,d=Math.sqrt(dx*dx+dy*dy);if(d<100){x.beginPath();x.moveTo(p.x,p.y);x.lineTo(o.x,o.y);x.strokeStyle=`rgba(192,168,130,${.03*(1-d/100)})`;x.lineWidth=.3;x.stroke()}}});
   requestAnimationFrame(d)}d();
