@@ -17,12 +17,8 @@ body.theme-purple, body {
   --bg-main: #090914;
   --bg-card: #121124;
   --text-glowing: #c084fc;
-  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
 }
 
-code, pre, .font-mono, [class*="font-mono"] {
-  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
-}
 
 /* Theme 2: Solar Amber & Flame Orange */
 body.theme-amber {
