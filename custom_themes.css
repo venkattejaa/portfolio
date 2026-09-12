@@ -1,0 +1,132 @@
+/* Custom Portfolio Theme System */
+:root {
+  /* Default Cyberpunk Purple & Cyan Theme */
+  --accent-color: #a855f7;
+  --accent-hover: #9333ea;
+  --accent-secondary: #06b6d4;
+  --bg-main: #090914;
+  --bg-card: #121124;
+  --text-glowing: #c084fc;
+}
+
+/* Theme 1: Cyberpunk Purple & Electric Cyan (Active Default) */
+body.theme-purple, body {
+  --accent-color: #a855f7;
+  --accent-hover: #9333ea;
+  --accent-secondary: #06b6d4;
+  --bg-main: #090914;
+  --bg-card: #121124;
+  --text-glowing: #c084fc;
+}
+
+/* Theme 2: Solar Amber & Flame Orange */
+body.theme-amber {
+  --accent-color: #f59e0b;
+  --accent-hover: #d97706;
+  --accent-secondary: #ff5500;
+  --bg-main: #0c0a09;
+  --bg-card: #181512;
+  --text-glowing: #fbbf24;
+}
+
+/* Theme 3: Ocean Teal & Ice Blue */
+body.theme-blue {
+  --accent-color: #38bdf8;
+  --accent-hover: #0284c7;
+  --accent-secondary: #14b8a6;
+  --bg-main: #050e17;
+  --bg-card: #0b1a2b;
+  --text-glowing: #7dd3fc;
+}
+
+/* Theme 4: Sunset Coral & Magenta */
+body.theme-coral {
+  --accent-color: #f43f5e;
+  --accent-hover: #e11d48;
+  --accent-secondary: #e879f9;
+  --bg-main: #0d0812;
+  --bg-card: #171022;
+  --text-glowing: #fb7185;
+}
+
+/* Dynamic CSS Overrides for Parity & WOW Factor */
+body {
+  background-color: var(--bg-main) !important;
+  color: #ffffff !important;
+  transition: background-color 0.4s ease, color 0.4s ease;
+}
+
+/* Override all green accent colors (#00ff99) with active theme accent */
+.text-accent,
+.text-\[\#00ff99\],
+[class*="text-[#00ff99]"] {
+  color: var(--accent-color) !important;
+}
+
+.bg-accent,
+.bg-\[\#00ff99\] {
+  background-color: var(--accent-color) !important;
+}
+
+.border-accent,
+.border-\[\#00ff99\],
+[class*="border-[#00ff99]"] {
+  border-color: var(--accent-color) !important;
+}
+
+/* Buttons & Interactive Elements */
+button.border-accent:hover,
+a.border-accent:hover,
+.hover\:bg-accent:hover {
+  background-color: var(--accent-color) !important;
+  color: #000000 !important;
+  box-shadow: 0 0 20px var(--accent-color) !important;
+}
+
+/* SVG Profile Ring Dashes */
+svg circle[stroke="#00ff99"],
+svg path[stroke="#00ff99"] {
+  stroke: var(--accent-color) !important;
+}
+
+/* Navbar active indicator */
+header nav a.text-accent,
+header nav button.text-accent {
+  color: var(--accent-color) !important;
+}
+
+/* Theme Switcher Widget Floating Toolbar */
+.theme-picker-toolbar {
+  position: fixed;
+  top: 1rem;
+  right: 1.5rem;
+  z-index: 9999;
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
+  background: rgba(18, 17, 36, 0.85);
+  backdrop-filter: blur(12px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  padding: 0.4rem 0.8rem;
+  border-radius: 9999px;
+  box-shadow: 0 10px 30px rgba(0, 0, 0, 0.5);
+}
+
+.theme-btn {
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  border: 2px solid transparent;
+  cursor: pointer;
+  transition: transform 0.2s ease, border-color 0.2s ease;
+}
+
+.theme-btn:hover, .theme-btn.active {
+  transform: scale(1.2);
+  border-color: #ffffff;
+}
+
+.theme-btn.purple { background: linear-gradient(135deg, #a855f7, #06b6d4); }
+.theme-btn.amber { background: linear-gradient(135deg, #f59e0b, #ff5500); }
+.theme-btn.blue { background: linear-gradient(135deg, #38bdf8, #14b8a6); }
+.theme-btn.coral { background: linear-gradient(135deg, #f43f5e, #e879f9); }

@@ -1,0 +1,10 @@
+{
+  "name": "radnaabazar-reference",
+  "version": "1.0.0",
+  "description": "Scraped static reference copy of Radnaabazar Bulgan portfolio",
+  "main": "en.html",
+  "scripts": {
+    "dev": "python3 -m http.server 3000",
+    "start": "python3 -m http.server 3000"
+  }
+}
