@@ -212,4 +212,22 @@ document.addEventListener('DOMContentLoaded', () => {
       }
     });
   }
+
+  // 8. Rotating Trait Text on Personal Page
+  const traitEl = document.getElementById('rotating-trait-text');
+  if (traitEl) {
+    const traits = ["Curious", "Clever", "Passionate", "Creative", "a Builder"];
+    let tIdx = 0;
+    setInterval(() => {
+      tIdx = (tIdx + 1) % traits.length;
+      traitEl.style.opacity = '0';
+      traitEl.style.transform = 'translateY(-6px)';
+      setTimeout(() => {
+        traitEl.textContent = traits[tIdx];
+        traitEl.style.opacity = '1';
+        traitEl.style.transform = 'translateY(0)';
+      }, 200);
+    }, 2400);
+  }
 });
+

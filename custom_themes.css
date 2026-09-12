@@ -17,6 +17,11 @@ body.theme-purple, body {
   --bg-main: #090914;
   --bg-card: #121124;
   --text-glowing: #c084fc;
+  font-family: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif !important;
+}
+
+code, pre, .font-mono, [class*="font-mono"] {
+  font-family: ui-monospace, SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace !important;
 }
 
 /* Theme 2: Solar Amber & Flame Orange */
@@ -130,3 +135,17 @@ header nav button.text-accent {
 .theme-btn.amber { background: linear-gradient(135deg, #f59e0b, #ff5500); }
 .theme-btn.blue { background: linear-gradient(135deg, #38bdf8, #14b8a6); }
 .theme-btn.coral { background: linear-gradient(135deg, #f43f5e, #e879f9); }
+
+/* Card & Surface Styling Parity for Themes */
+body.theme-purple .bg-slate-900\/60,
+body.theme-purple .bg-neutral-900,
+body.theme-purple .bg-slate-900\/40,
+body.theme-purple .bg-black-100 {
+  background-color: var(--bg-card) !important;
+}
+
+body.theme-purple .border-slate-800,
+body.theme-purple .border-neutral-800 {
+  border-color: rgba(168, 85, 247, 0.2) !important;
+}
+
